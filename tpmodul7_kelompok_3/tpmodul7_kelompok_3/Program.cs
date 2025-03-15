@@ -2,25 +2,42 @@
 using System.IO;
 using Newtonsoft.Json;
 
-public class DataMahasiswa<NIM_PRAKTIKAN>
+namespace TPModul7
 {
-    public string Nama { get; set; }
-    public string NIM { get; set; }
-    public string Fakultas { get; set; }
-
-    public static void ReadJSON()
+    public class programBacaJSON
     {
-        string filePath = "tp7_1_<NIM_PRAKTIKAN>.json"; // Ganti dengan nama file yang sudah disimpan
-        if (File.Exists(filePath))
+        public static void Main()
         {
-            string jsonContent = File.ReadAllText(filePath);
-            var mahasiswa = JsonConvert.DeserializeObject<DataMahasiswa<NIM_PRAKTIKAN>>(jsonContent);
-
-            Console.WriteLine($"Nama {mahasiswa.Nama} dengan NIM {mahasiswa.NIM} dari fakultas {mahasiswa.Fakultas}");
+            DataMahasiswa2211104006.ReadJSON();
         }
-        else
+    }
+
+    public class Nama
+    {
+        public string Depan { get; set; }
+        public string Belakang { get; set; }
+    }
+
+    public class DataMahasiswa2211104006
+    {
+        public Nama Nama { get; set; }
+        public long NIM { get; set; }
+        public string Fakultas { get; set; }
+
+        public static void ReadJSON()
         {
-            Console.WriteLine("File JSON tidak ditemukan!");
+            string filePath = "tp7_1_2211104006.json"; // Sesuaikan dengan nama file JSON
+            if (File.Exists(filePath))
+            {
+                string jsonContent = File.ReadAllText(filePath);
+                var mahasiswa = JsonConvert.DeserializeObject<DataMahasiswa2211104006>(jsonContent);
+
+                Console.WriteLine($"Nama {mahasiswa.Nama.Depan} {mahasiswa.Nama.Belakang} dengan NIM {mahasiswa.NIM} dari fakultas {mahasiswa.Fakultas}");
+            }
+            else
+            {
+                Console.WriteLine("File JSON tidak ditemukan!");
+            }
         }
     }
 }
