@@ -14,10 +14,10 @@ public class Movie
 }
 
 // Model Kursi
-public class Seat
-{
-    public Dictionary<string, List<string>> ScheduleSeats { get; set; }
-}
+//public class Seat
+//{
+//    public Dictionary<string, List<string>> ScheduleSeats { get; set; }
+//}
 
 // Model Transaksi
 public class Transaction
