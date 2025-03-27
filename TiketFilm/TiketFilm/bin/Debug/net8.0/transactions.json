@@ -1,0 +1,12 @@
+[
+  {
+    "id": 1,
+    "movie_id": 2,
+    "movie_title": "Interstellar",
+    "schedule": "15:00",
+    "seat": "A1",
+    "buyer": "John Doe",
+    "price": 50000,
+    "timestamp": "2025-03-26T14:30:00Z"
+  }
+]
