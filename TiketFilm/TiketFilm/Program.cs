@@ -26,7 +26,7 @@ public class Transaction
     public int MovieId { get; set; }
     public string MovieTitle { get; set; }
     public string Schedule { get; set; }
-    public string Seat { get; set; }
+    public List<string> Seats { get; set; }
     public string Buyer { get; set; }
     public int Price { get; set; }
     public DateTime Timestamp { get; set; }
@@ -35,6 +35,7 @@ public class Transaction
 class Program
 {
     static string movieFile = "movies.json";
+    static string seatFile = "seats.json";
 
     static void Main()
     {
@@ -58,10 +59,7 @@ class Program
                     Console.ReadLine();
                     break;
                 case "2":
-                    Console.WriteLine();
-                    Console.WriteLine("  <> Fitur belum dibuat");
-                    Console.WriteLine("  \nTekan Enter untuk kembali ke menu...");
-                    Console.ReadLine();
+                    OrderTicket();
                     break;
                 case "3":
                     return;
@@ -76,7 +74,6 @@ class Program
     static List<Movie> GetMovies()
     {
         if (!File.Exists(movieFile)) return new List<Movie>();
-
         string json = File.ReadAllText(movieFile);
         return JsonConvert.DeserializeObject<List<Movie>>(json) ?? new List<Movie>();
     }
@@ -92,5 +89,73 @@ class Program
             Console.WriteLine("          Jadwal: " + string.Join(", ", movie.Schedule));
             Console.WriteLine();
         }
+    }
+
+    static void OrderTicket()
+    {
+        var movies = GetMovies();
+        Console.WriteLine();
+        Console.WriteLine("  <> Pilih Film:");
+        foreach (var movie in movies)
+        {
+            Console.WriteLine($"      [{movie.Id}] {movie.Title}");
+        }
+        Console.Write("  Masukkan ID Film: ");
+        int movieId;
+        if (!int.TryParse(Console.ReadLine(), out movieId) || !movies.Exists(m => m.Id == movieId))
+        {
+            Console.WriteLine("  <> Film tidak ditemukan!");
+            Console.ReadLine();
+            return;
+        }
+
+        var selectedMovie = movies.Find(m => m.Id == movieId);
+        Console.WriteLine();
+        Console.WriteLine("  <> Pilih Jadwal:");
+        for (int i = 0; i < selectedMovie.Schedule.Count; i++)
+        {
+            Console.WriteLine($"      [{i + 1}] {selectedMovie.Schedule[i]}");
+        }
+        Console.Write("  Masukkan nomor jadwal: ");
+        int scheduleIndex;
+        if (!int.TryParse(Console.ReadLine(), out scheduleIndex) || scheduleIndex < 1 || scheduleIndex > selectedMovie.Schedule.Count)
+        {
+            Console.WriteLine("  <> Jadwal tidak valid!");
+            Console.ReadLine();
+            return;
+        }
+
+        string selectedSchedule = selectedMovie.Schedule[scheduleIndex - 1];
+        Console.Write("  Berapa tiket yang ingin dibeli? ");
+        int ticketCount;
+        if (!int.TryParse(Console.ReadLine(), out ticketCount) || ticketCount < 1)
+        {
+            Console.WriteLine("  <> Jumlah tiket tidak valid!");
+            Console.ReadLine();
+            return;
+        }
+
+        List<string> seats = new List<string>();
+        for (int i = 0; i < ticketCount; i++)
+        {
+            Console.WriteLine();
+            Console.Write($"  Pilih Kursi untuk tiket {i + 1} (A1 - D5): ");
+            string seat = Console.ReadLine().ToUpper();
+            seats.Add(seat);
+        }
+
+        Console.WriteLine();
+        Console.Write("  Masukkan nama Anda: ");
+        string buyer = Console.ReadLine();
+
+        Console.WriteLine();
+        Console.WriteLine("  <> Pemesanan Berhasil!");
+        Console.WriteLine($"      Film: {selectedMovie.Title}");
+        Console.WriteLine($"      Jadwal: {selectedSchedule}");
+        Console.WriteLine("      Kursi: " + string.Join(", ", seats));
+        Console.WriteLine($"      Nama: {buyer}");
+        Console.WriteLine();
+        Console.WriteLine("  Tekan Enter untuk kembali ke menu...");
+        Console.ReadLine();
     }
 }
