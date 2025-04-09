@@ -36,6 +36,7 @@ class Program
 {
     static string movieFile = "movies.json";
     static string seatFile = "seats.json";
+    static string transactionFile = "transactions.json"; // Added missing variable
 
     static void Main()
     {
@@ -181,12 +182,16 @@ class Program
                 Console.Write($"  Pilih Kursi untuk tiket {i + 1} (contoh A1 - D5): ");
                 string seat = Console.ReadLine().ToUpper();
 
+                if (!availableSeats.Contains(seat))
+                {
+                    Console.WriteLine("  <> Kursi tidak tersedia!");
+                    continue;
+                }
 
                 seats.Add(seat);
                 break;
             }
         }
-
 
         Console.Write("\n  Masukkan nama Anda: ");
         string buyer = Console.ReadLine();
@@ -194,135 +199,6 @@ class Program
         // Simpan kursi ke struktur baru
         seatData.MovieScheduleSeats[movieId][selectedSchedule].AddRange(seats);
         SaveSeatData(seatData);
-
-        Console.WriteLine("\n  <> Pemesanan Berhasil!");
-        Console.WriteLine($"      Film   : {selectedMovie.Title}");
-        Console.WriteLine($"      Jadwal : {selectedSchedule}");
-        Console.WriteLine($"      Kursi  : {string.Join(", ", seats)}");
-        Console.WriteLine($"      Nama   : {buyer}");
-    }
-
-    static List<string> GenerateAllSeats()
-    {
-        var result = new List<string>();
-        char[] rows = { 'A', 'B', 'C', 'D' };
-        for (int i = 1; i <= 5; i++)
-        {
-            foreach (var row in rows)
-            {
-                result.Add($"{row}{i}");
-            }
-        }
-        return result;
-    }
-
-    static void OrderTicket()
-    {
-        var movies = GetMovies();
-        Console.WriteLine();
-        Console.WriteLine("  <> Pilih Film:");
-        foreach (var movie in movies)
-        {
-            Console.WriteLine($"      [{movie.Id}] {movie.Title}");
-        }
-        Console.Write("  Masukkan ID Film: ");
-        int movieId;
-        if (!int.TryParse(Console.ReadLine(), out movieId) || !movies.Exists(m => m.Id == movieId))
-        {
-            Console.WriteLine("  <> Film tidak ditemukan!");
-            Console.ReadLine();
-            return;
-        }
-
-        var selectedMovie = movies.Find(m => m.Id == movieId);
-        Console.WriteLine();
-        Console.WriteLine("  <> Pilih Jadwal:");
-        for (int i = 0; i < selectedMovie.Schedule.Count; i++)
-        {
-            Console.WriteLine($"      [{i + 1}] {selectedMovie.Schedule[i]}");
-        }
-        Console.Write("  Masukkan nomor jadwal: ");
-        int scheduleIndex;
-        if (!int.TryParse(Console.ReadLine(), out scheduleIndex) || scheduleIndex < 1 || scheduleIndex > selectedMovie.Schedule.Count)
-        {
-            Console.WriteLine("  <> Jadwal tidak valid!");
-            Console.ReadLine();
-            return;
-        }
-
-        string selectedSchedule = selectedMovie.Schedule[scheduleIndex - 1];
-        Console.Write("  Berapa tiket yang ingin dibeli? ");
-        int ticketCount;
-        if (!int.TryParse(Console.ReadLine(), out ticketCount) || ticketCount < 1)
-        {
-            Console.WriteLine("  <> Jumlah tiket tidak valid!");
-            Console.ReadLine();
-            return;
-        }
-
-        List<string> seats = new List<string>();
-        for (int i = 0; i < ticketCount; i++)
-        {
-            Console.WriteLine();
-        }
-    }
-
-    static void OrderTicket()
-    {
-        var movies = GetMovies();
-        Console.WriteLine();
-        Console.WriteLine("  <> Pilih Film:");
-        foreach (var movie in movies)
-        {
-            Console.WriteLine($"      [{movie.Id}] {movie.Title}");
-        }
-        Console.Write("  Masukkan ID Film: ");
-        int movieId;
-        if (!int.TryParse(Console.ReadLine(), out movieId) || !movies.Exists(m => m.Id == movieId))
-        {
-            Console.WriteLine("  <> Film tidak ditemukan!");
-            Console.ReadLine();
-            return;
-        }
-
-        var selectedMovie = movies.Find(m => m.Id == movieId);
-        Console.WriteLine();
-        Console.WriteLine("  <> Pilih Jadwal:");
-        for (int i = 0; i < selectedMovie.Schedule.Count; i++)
-        {
-            Console.WriteLine($"      [{i + 1}] {selectedMovie.Schedule[i]}");
-        }
-        Console.Write("  Masukkan nomor jadwal: ");
-        int scheduleIndex;
-        if (!int.TryParse(Console.ReadLine(), out scheduleIndex) || scheduleIndex < 1 || scheduleIndex > selectedMovie.Schedule.Count)
-        {
-            Console.WriteLine("  <> Jadwal tidak valid!");
-            Console.ReadLine();
-            return;
-        }
-
-        string selectedSchedule = selectedMovie.Schedule[scheduleIndex - 1];
-        Console.Write("  Berapa tiket yang ingin dibeli? ");
-        int ticketCount;
-        if (!int.TryParse(Console.ReadLine(), out ticketCount) || ticketCount < 1)
-        {
-            Console.WriteLine("  <> Jumlah tiket tidak valid!");
-            Console.ReadLine();
-            return;
-        }
-
-        List<string> seats = new List<string>();
-        for (int i = 0; i < ticketCount; i++)
-        {
-            Console.WriteLine();
-            Console.Write($"  Pilih Kursi untuk tiket {i + 1} (A1 - D5): ");
-            string seat = Console.ReadLine().ToUpper();
-            seats.Add(seat);
-        }
-
-        Console.WriteLine();
-        Console.Write("  Masukkan nama Anda: ");
-        string buyer = Console.ReadLine();
 
         // Hitung harga tiket
         int hargaPerTiket = 50000; // bisa disesuaikan
@@ -341,16 +217,26 @@ class Program
         };
         SaveTransaction(transaction);
 
-        Console.WriteLine();
-        Console.WriteLine("  <> Pemesanan Berhasil!");
+        Console.WriteLine("\n  <> Pemesanan Berhasil!");
         Console.WriteLine($"      Film   : {selectedMovie.Title}");
         Console.WriteLine($"      Jadwal : {selectedSchedule}");
         Console.WriteLine($"      Kursi  : {string.Join(", ", seats)}");
         Console.WriteLine($"      Nama   : {buyer}");
         Console.WriteLine($"      Total  : Rp{totalHarga:N0}");
-        Console.WriteLine();
-        Console.WriteLine("  Tekan Enter untuk kembali ke menu...");
-        Console.ReadLine();
+    }
+
+    static List<string> GenerateAllSeats()
+    {
+        var result = new List<string>();
+        char[] rows = { 'A', 'B', 'C', 'D' };
+        for (int i = 1; i <= 5; i++)
+        {
+            foreach (var row in rows)
+            {
+                result.Add($"{row}{i}");
+            }
+        }
+        return result;
     }
 
     static void SaveTransaction(Transaction transaction)
