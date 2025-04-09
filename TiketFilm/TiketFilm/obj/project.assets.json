@@ -55,23 +55,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\LENOVO\\.nuget\\packages\\": {},
+    "C:\\Users\\ACER\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\STUFF\\1-KULIAH\\0.Semester_6\\4. Konstruksi Perangkat Lunak\\Praktikum\\KPL-S6-Tubes_Kelompok-3\\TiketFilm\\TiketFilm\\TiketFilm.csproj",
+      "projectUniqueName": "E:\\KPL-S6-Tubes_Kelompok-3\\TiketFilm\\TiketFilm\\TiketFilm.csproj",
       "projectName": "TiketFilm",
-      "projectPath": "C:\\STUFF\\1-KULIAH\\0.Semester_6\\4. Konstruksi Perangkat Lunak\\Praktikum\\KPL-S6-Tubes_Kelompok-3\\TiketFilm\\TiketFilm\\TiketFilm.csproj",
-      "packagesPath": "C:\\Users\\LENOVO\\.nuget\\packages\\",
-      "outputPath": "C:\\STUFF\\1-KULIAH\\0.Semester_6\\4. Konstruksi Perangkat Lunak\\Praktikum\\KPL-S6-Tubes_Kelompok-3\\TiketFilm\\TiketFilm\\obj\\",
+      "projectPath": "E:\\KPL-S6-Tubes_Kelompok-3\\TiketFilm\\TiketFilm\\TiketFilm.csproj",
+      "packagesPath": "C:\\Users\\ACER\\.nuget\\packages\\",
+      "outputPath": "E:\\KPL-S6-Tubes_Kelompok-3\\TiketFilm\\TiketFilm\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\LENOVO\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ACER\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -125,7 +125,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

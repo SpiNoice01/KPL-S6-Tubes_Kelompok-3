@@ -36,6 +36,7 @@ class Program
 {
     static string movieFile = "movies.json";
     static string seatFile = "seats.json";
+    static string transactionFile = "transactions.json";
 
     static void Main()
     {
@@ -148,14 +149,48 @@ class Program
         Console.Write("  Masukkan nama Anda: ");
         string buyer = Console.ReadLine();
 
+        // Hitung harga tiket
+        int hargaPerTiket = 50000; // bisa disesuaikan
+        int totalHarga = hargaPerTiket * ticketCount;
+
+        // Buat dan simpan transaksi
+        var transaction = new Transaction
+        {
+            MovieId = selectedMovie.Id,
+            MovieTitle = selectedMovie.Title,
+            Schedule = selectedSchedule,
+            Seats = seats,
+            Buyer = buyer,
+            Price = totalHarga,
+            Timestamp = DateTime.Now
+        };
+        SaveTransaction(transaction);
+
         Console.WriteLine();
         Console.WriteLine("  <> Pemesanan Berhasil!");
-        Console.WriteLine($"      Film: {selectedMovie.Title}");
-        Console.WriteLine($"      Jadwal: {selectedSchedule}");
-        Console.WriteLine("      Kursi: " + string.Join(", ", seats));
-        Console.WriteLine($"      Nama: {buyer}");
+        Console.WriteLine($"      Film   : {selectedMovie.Title}");
+        Console.WriteLine($"      Jadwal : {selectedSchedule}");
+        Console.WriteLine($"      Kursi  : {string.Join(", ", seats)}");
+        Console.WriteLine($"      Nama   : {buyer}");
+        Console.WriteLine($"      Total  : Rp{totalHarga:N0}");
         Console.WriteLine();
         Console.WriteLine("  Tekan Enter untuk kembali ke menu...");
         Console.ReadLine();
+    }
+
+    static void SaveTransaction(Transaction transaction)
+    {
+        List<Transaction> transactions = new List<Transaction>();
+        if (File.Exists(transactionFile))
+        {
+            string json = File.ReadAllText(transactionFile);
+            transactions = JsonConvert.DeserializeObject<List<Transaction>>(json) ?? new List<Transaction>();
+        }
+
+        transaction.Id = transactions.Count + 1;
+        transactions.Add(transaction);
+
+        string updatedJson = JsonConvert.SerializeObject(transactions, Formatting.Indented);
+        File.WriteAllText(transactionFile, updatedJson);
     }
 }
