@@ -1,0 +1,29 @@
+Meet kpl 27/03/2025
+
+✅ 1. Apakah ada yang ditanyakan
+✅ 2. lihat ppt buat Roadmap
+✅ 3. Pakai Branch Lain di github dan ReFirst Commit
+   4. Pembagian tugas dan pengerjaannya
+> Agil, Initial Commit & Testing
+> Aziz, Menyimpan data
+> Lutfi, Menyiapkan Fungsi Mengganti Page
+> Aorin, Menampilkan data yang disimpan Aziz
+
+Karena Bisnis Prosesnya seperti ini.
+
+✅1. Melihat List Film (Automata) - Agil
+🟦2. Pesan tiket (Automata) - Lutfi
+🟦2.1 Memilih Kursi Tiket (Automata) - Lutfi
+🟦2.2 Menampilkan Resi & Tiket (Automata) - Agil
+🟦2.3 Data Pemesanan disimpan didalam json (📃Table Driven) - Aziz
+== Pesan Ulang
+✅1. Melihat List Film (Automata) - Agil
+🟦2. Pesan tiket (Automata) - Lutfi
+📃2.1 List Kursi Yang Telah Diambil (📃 Table Driven ) - Aorin
+🟦2.2 Defensive Programing yang Print " Mohon Pilih Kursi Lain " (Automata) - Agil
+🟦2.3 Menampilkan Resi & Tiket ( Automata ) - Aorin
+🟦2.4 Data Pemesanan disimpan didalam json (📃 Table Driven ) - Aziz
+
+
+
+5. done
