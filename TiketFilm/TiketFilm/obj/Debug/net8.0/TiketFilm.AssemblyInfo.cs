@@ -13,7 +13,11 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TiketFilm")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
+<<<<<<< HEAD
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e50270fdfe0424da03b64b1b2ef994e74e94a736")]
+=======
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8f20953154108479df51ae656563f8b7fe11d733")]
+>>>>>>> origin/Aorin
 [assembly: System.Reflection.AssemblyProductAttribute("TiketFilm")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TiketFilm")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
