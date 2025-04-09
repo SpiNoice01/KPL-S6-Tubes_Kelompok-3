@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "2bn0WiOpJWo=",
+  "dgSpecHash": "zH6/33TIDcQ=",
   "success": true,
-  "projectFilePath": "E:\\KPL-S6-Tubes_Kelompok-3\\TiketFilm\\TiketFilm\\TiketFilm.csproj",
+  "projectFilePath": "C:\\STUFF\\1-KULIAH\\0.Semester_6\\4. Konstruksi Perangkat Lunak\\Praktikum\\KPL-S6-Tubes_Kelompok-3\\TiketFilm\\TiketFilm\\TiketFilm.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\ACER\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+    "C:\\Users\\LENOVO\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
   ],
   "logs": []
 }

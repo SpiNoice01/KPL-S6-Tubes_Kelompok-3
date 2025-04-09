@@ -21,5 +21,30 @@
     "Buyer": "Aziz",
     "Price": 100000,
     "Timestamp": "2025-04-07T20:02:21.6664615+07:00"
+  },
+  {
+    "Id": 3,
+    "MovieId": 1,
+    "MovieTitle": "Inception",
+    "Schedule": "14:00",
+    "Seats": [
+      "A1",
+      "A2"
+    ],
+    "Buyer": "Aziz",
+    "Price": 100000,
+    "Timestamp": "2025-04-09T12:20:42.5435645+07:00"
+  },
+  {
+    "Id": 4,
+    "MovieId": 1,
+    "MovieTitle": "Inception",
+    "Schedule": "14:00",
+    "Seats": [
+      "A1"
+    ],
+    "Buyer": "Aziz",
+    "Price": 50000,
+    "Timestamp": "2025-04-09T12:20:58.131624+07:00"
   }
 ]
