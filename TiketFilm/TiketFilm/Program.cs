@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using Newtonsoft.Json;
@@ -36,7 +36,7 @@ class Program
 {
     static string movieFile = "movies.json";
     static string seatFile = "seats.json";
-    static string transactionFile = "transactions.json"; // Added missing variable
+    static string transactionFile = "transactions.json";
 
     static void Main()
     {
@@ -57,7 +57,12 @@ class Program
                     ulang = lagi == "y";
                 } while (ulang);
             }},
-            { "3", () => Environment.Exit(0) }
+            { "3", () => {
+                ShowTransactionHistory();
+                Console.WriteLine("\n  Tekan Enter untuk kembali ke menu...");
+                Console.ReadLine();
+            }},
+            { "4", () => Environment.Exit(0) }
         };
 
         while (true)
@@ -66,7 +71,8 @@ class Program
             Console.WriteLine("  <> Sistem Pemesanan Tiket Bioskop CLI");
             Console.WriteLine("  1. Lihat Film");
             Console.WriteLine("  2. Pesan Tiket");
-            Console.WriteLine("  3. Keluar");
+            Console.WriteLine("  3. Lihat History Pembelian");
+            Console.WriteLine("  4. Keluar");
             Console.Write("  Pilih menu: ");
             string choice = Console.ReadLine();
 
@@ -149,7 +155,6 @@ class Program
 
         string selectedSchedule = selectedMovie.Schedule[scheduleIndex - 1];
 
-        // Dapatkan kursi yang sudah dipesan
         if (!seatData.MovieScheduleSeats.ContainsKey(movieId))
             seatData.MovieScheduleSeats[movieId] = new Dictionary<string, List<string>>();
 
@@ -196,15 +201,12 @@ class Program
         Console.Write("\n  Masukkan nama Anda: ");
         string buyer = Console.ReadLine();
 
-        // Simpan kursi ke struktur baru
         seatData.MovieScheduleSeats[movieId][selectedSchedule].AddRange(seats);
         SaveSeatData(seatData);
 
-        // Hitung harga tiket
-        int hargaPerTiket = 50000; // bisa disesuaikan
+        int hargaPerTiket = 50000;
         int totalHarga = hargaPerTiket * ticketCount;
 
-        // Buat dan simpan transaksi
         var transaction = new Transaction
         {
             MovieId = selectedMovie.Id,
@@ -254,5 +256,35 @@ class Program
         string updatedJson = JsonConvert.SerializeObject(transactions, Formatting.Indented);
         File.WriteAllText(transactionFile, updatedJson);
     }
+
+    static void ShowTransactionHistory()
+    {
+        if (!File.Exists(transactionFile))
+        {
+            Console.WriteLine("\n  <> Belum ada transaksi yang tercatat.");
+            return;
+        }
+
+        string json = File.ReadAllText(transactionFile);
+        var transactions = JsonConvert.DeserializeObject<List<Transaction>>(json) ?? new List<Transaction>();
+
+        if (transactions.Count == 0)
+        {
+            Console.WriteLine("\n  <> Belum ada transaksi yang tercatat.");
+            return;
+        }
+
+        Console.WriteLine("\n  <> Riwayat Transaksi:");
+        foreach (var t in transactions)
+        {
+            Console.WriteLine($"  ID         : {t.Id}");
+            Console.WriteLine($"    Film     : {t.MovieTitle}");
+            Console.WriteLine($"    Jadwal   : {t.Schedule}");
+            Console.WriteLine($"    Kursi    : {string.Join(", ", t.Seats)}");
+            Console.WriteLine($"    Nama     : {t.Buyer}");
+            Console.WriteLine($"    Harga    : Rp{t.Price:N0}");
+            Console.WriteLine($"    Waktu    : {t.Timestamp}");
+            Console.WriteLine("  ---------------------------------------------");
+        }
+    }
 }
-// Test Push Main
