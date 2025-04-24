@@ -1,12 +1,63 @@
 [
   {
-    "id": 1,
-    "movie_id": 2,
-    "movie_title": "Interstellar",
-    "schedule": "15:00",
-    "seat": "A1",
-    "buyer": "John Doe",
-    "price": 50000,
-    "timestamp": "2025-03-26T14:30:00Z"
+    "Id": 1,
+    "MovieId": 0,
+    "MovieTitle": null,
+    "Schedule": "15:00",
+    "Seats": null,
+    "Buyer": "John Doe",
+    "Price": 50000,
+    "Timestamp": "2025-03-26T14:30:00Z"
+  },
+  {
+    "Id": 2,
+    "MovieId": 1,
+    "MovieTitle": "Inception",
+    "Schedule": "10:00",
+    "Seats": [
+      "A1",
+      "A4"
+    ],
+    "Buyer": "Aziz",
+    "Price": 100000,
+    "Timestamp": "2025-04-07T20:02:21.6664615+07:00"
+  },
+  {
+    "Id": 3,
+    "MovieId": 1,
+    "MovieTitle": "Inception",
+    "Schedule": "14:00",
+    "Seats": [
+      "A1",
+      "A2"
+    ],
+    "Buyer": "Aziz",
+    "Price": 100000,
+    "Timestamp": "2025-04-09T12:20:42.5435645+07:00"
+  },
+  {
+    "Id": 4,
+    "MovieId": 1,
+    "MovieTitle": "Inception",
+    "Schedule": "14:00",
+    "Seats": [
+      "A1"
+    ],
+    "Buyer": "Aziz",
+    "Price": 50000,
+    "Timestamp": "2025-04-09T12:20:58.131624+07:00"
+  },
+  {
+    "Id": 5,
+    "MovieId": 1,
+    "MovieTitle": "Inception",
+    "Schedule": "14:00",
+    "Seats": [
+      "A1",
+      "A2"
+    ],
+    "Buyer": "Aziz",
+    "Price": 100000,
+    "Timestamp": "2025-04-09T12:54:28.5107869+07:00"
   }
 ]
