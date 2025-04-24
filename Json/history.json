@@ -1,0 +1,23 @@
+[
+    {
+      "Id": 1,
+      "MovieId": 101,
+      "MovieTitle": "Avengers: Endgame",
+      "Schedule": "14:00",
+      "Seats": ["A1", "A2"],
+      "Buyer": "Raka",
+      "Price": 100000,
+      "Timestamp": "2025-04-24T14:23:45"
+    },
+    {
+      "Id": 2,
+      "MovieId": 102,
+      "MovieTitle": "Spirited Away",
+      "Schedule": "16:30",
+      "Seats": ["B1"],
+      "Buyer": "Nina",
+      "Price": 50000,
+      "Timestamp": "2025-04-24T16:50:12"
+    }
+  ]
+  
