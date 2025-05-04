@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35828.75 d17.13
+VisualStudioVersion = 17.13.35828.75
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TiketFilm", "TiketFilm\TiketFilm.csproj", "{ECB074CC-6EED-46BC-AABE-E3211B9C8C55}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{7D311B25-BC56-4404-B3C9-93620C892C47}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{ECB074CC-6EED-46BC-AABE-E3211B9C8C55}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ECB074CC-6EED-46BC-AABE-E3211B9C8C55}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ECB074CC-6EED-46BC-AABE-E3211B9C8C55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D311B25-BC56-4404-B3C9-93620C892C47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D311B25-BC56-4404-B3C9-93620C892C47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D311B25-BC56-4404-B3C9-93620C892C47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D311B25-BC56-4404-B3C9-93620C892C47}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
