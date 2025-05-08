@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "C:\\STUFF\\1-KULIAH\\0.Semester_6\\4. Konstruksi Perangkat Lunak\\Praktikum\\KPL-S6-Tubes_Kelompok-3\\TiketFilm\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{7D311B25-BC56-4404-B3C9-93620C892C47}|Test\\Test.csproj|c:\\stuff\\1-kuliah\\0.semester_6\\4. konstruksi perangkat lunak\\praktikum\\kpl-s6-tubes_kelompok-3\\tiketfilm\\test\\test1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7D311B25-BC56-4404-B3C9-93620C892C47}|Test\\Test.csproj|solutionrelative:test\\test1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D12E07E6-2805-41F3-8C8B-015B735CE5D6}|BenchmarkPerformTesting\\BenchmarkPerformTesting.csproj|c:\\stuff\\1-kuliah\\0.semester_6\\4. konstruksi perangkat lunak\\praktikum\\kpl-s6-tubes_kelompok-3\\tiketfilm\\benchmarkperformtesting\\programtestperform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D12E07E6-2805-41F3-8C8B-015B735CE5D6}|BenchmarkPerformTesting\\BenchmarkPerformTesting.csproj|solutionrelative:benchmarkperformtesting\\programtestperform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{ECB074CC-6EED-46BC-AABE-E3211B9C8C55}|TiketFilm\\TiketFilm.csproj|c:\\stuff\\1-kuliah\\0.semester_6\\4. konstruksi perangkat lunak\\praktikum\\kpl-s6-tubes_kelompok-3\\tiketfilm\\tiketfilm\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{ECB074CC-6EED-46BC-AABE-E3211B9C8C55}|TiketFilm\\TiketFilm.csproj|solutionrelative:tiketfilm\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D311B25-BC56-4404-B3C9-93620C892C47}|Test\\Test.csproj|c:\\stuff\\1-kuliah\\0.semester_6\\4. konstruksi perangkat lunak\\praktikum\\kpl-s6-tubes_kelompok-3\\tiketfilm\\test\\test1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7D311B25-BC56-4404-B3C9-93620C892C47}|Test\\Test.csproj|solutionrelative:test\\test1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -23,14 +27,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Test1.cs",
-              "DocumentMoniker": "C:\\STUFF\\1-KULIAH\\0.Semester_6\\4. Konstruksi Perangkat Lunak\\Praktikum\\KPL-S6-Tubes_Kelompok-3\\TiketFilm\\Test\\Test1.cs",
-              "RelativeDocumentMoniker": "Test\\Test1.cs",
-              "ToolTip": "C:\\STUFF\\1-KULIAH\\0.Semester_6\\4. Konstruksi Perangkat Lunak\\Praktikum\\KPL-S6-Tubes_Kelompok-3\\TiketFilm\\Test\\Test1.cs",
-              "RelativeToolTip": "Test\\Test1.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAA==",
+              "Title": "ProgramTestPerform.cs",
+              "DocumentMoniker": "C:\\STUFF\\1-KULIAH\\0.Semester_6\\4. Konstruksi Perangkat Lunak\\Praktikum\\KPL-S6-Tubes_Kelompok-3\\TiketFilm\\BenchmarkPerformTesting\\ProgramTestPerform.cs",
+              "RelativeDocumentMoniker": "BenchmarkPerformTesting\\ProgramTestPerform.cs",
+              "ToolTip": "C:\\STUFF\\1-KULIAH\\0.Semester_6\\4. Konstruksi Perangkat Lunak\\Praktikum\\KPL-S6-Tubes_Kelompok-3\\TiketFilm\\BenchmarkPerformTesting\\ProgramTestPerform.cs",
+              "RelativeToolTip": "BenchmarkPerformTesting\\ProgramTestPerform.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-03T02:23:15.327Z",
+              "WhenOpened": "2025-05-07T14:46:42.675Z",
               "EditorCaption": ""
             },
             {
@@ -41,9 +45,26 @@
               "RelativeDocumentMoniker": "TiketFilm\\Program.cs",
               "ToolTip": "C:\\STUFF\\1-KULIAH\\0.Semester_6\\4. Konstruksi Perangkat Lunak\\Praktikum\\KPL-S6-Tubes_Kelompok-3\\TiketFilm\\TiketFilm\\Program.cs",
               "RelativeToolTip": "TiketFilm\\Program.cs",
-              "ViewState": "AgIAAFUAAAAAAAAAAAAuwGEAAAAeAAAAAAAAAA==",
+              "ViewState": "AgIAABoBAAAAAAAAAAAmwCQBAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-27T13:45:42.154Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Test1.cs",
+              "DocumentMoniker": "C:\\STUFF\\1-KULIAH\\0.Semester_6\\4. Konstruksi Perangkat Lunak\\Praktikum\\KPL-S6-Tubes_Kelompok-3\\TiketFilm\\Test\\Test1.cs",
+              "RelativeDocumentMoniker": "Test\\Test1.cs",
+              "ToolTip": "C:\\STUFF\\1-KULIAH\\0.Semester_6\\4. Konstruksi Perangkat Lunak\\Praktikum\\KPL-S6-Tubes_Kelompok-3\\TiketFilm\\Test\\Test1.cs",
+              "RelativeToolTip": "Test\\Test1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-03T02:23:15.327Z",
               "EditorCaption": ""
             }
           ]

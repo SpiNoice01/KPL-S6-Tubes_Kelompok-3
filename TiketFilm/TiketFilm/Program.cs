@@ -120,27 +120,27 @@
         }
 
 
-        static List<Movie> GetMovies()
+        public static List<Movie> GetMovies()
         {
             if (!File.Exists(movieFile)) return new List<Movie>();
             string json = File.ReadAllText(movieFile);
             return JsonConvert.DeserializeObject<List<Movie>>(json) ?? new List<Movie>();
         }
 
-        static Seat GetSeatData()
+        public static Seat GetSeatData()
         {
             if (!File.Exists(seatFile)) return new Seat();
             string json = File.ReadAllText(seatFile);
             return JsonConvert.DeserializeObject<Seat>(json) ?? new Seat();
         }
 
-        static void SaveSeatData(Seat data)
+        public static void SaveSeatData(Seat data)
         {
             string json = JsonConvert.SerializeObject(data, Formatting.Indented);
             File.WriteAllText(seatFile, json);
         }
 
-        static void ShowMovies()
+        public static void ShowMovies()
         {
             var movies = GetMovies();
             Console.WriteLine("\n  <> Daftar Film yang Tersedia:");
@@ -151,7 +151,7 @@
             }
         }
 
-        static void OrderTicket()
+        public static void OrderTicket()
         {
             var movies = GetMovies();
             var seatData = GetSeatData();
@@ -259,7 +259,7 @@
             Console.WriteLine($"      Total  : Rp{totalHarga:N0}");
         }
 
-        static List<string> GenerateAllSeats()
+        public static List<string> GenerateAllSeats()
         {
             var result = new List<string>();
             char[] rows = { 'A', 'B', 'C', 'D' };
@@ -273,7 +273,7 @@
             return result;
         }
 
-        static void SaveTransaction(Transaction transaction)
+        public static void SaveTransaction(Transaction transaction)
         {
             List<Transaction> transactions = new List<Transaction>();
             if (File.Exists(transactionFile))
@@ -289,7 +289,7 @@
             File.WriteAllText(transactionFile, updatedJson);
         }
 
-        static void ShowTransactionHistory()
+        public static void ShowTransactionHistory()
         {
             if (!File.Exists(transactionFile))
             {

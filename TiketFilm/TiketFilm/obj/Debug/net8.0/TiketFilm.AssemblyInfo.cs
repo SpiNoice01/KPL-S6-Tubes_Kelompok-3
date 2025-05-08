@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TiketFilm")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5bb699efeff780e9280eead2d5708ffa6cc73b18")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9423a0fc31049af8b5d43ba98209d6da6da3040c")]
 [assembly: System.Reflection.AssemblyProductAttribute("TiketFilm")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TiketFilm")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
