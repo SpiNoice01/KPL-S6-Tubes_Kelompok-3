@@ -34,149 +34,6 @@
         public DateTime Timestamp { get; set; }
     }
 
-    // Repository Interface
-    public interface IMovieRepository
-    {
-        List<Movie> GetAll();
-    }
-
-    public interface ISeatRepository
-    {
-        Seat Get();
-        void Save(Seat data);
-    }
-
-    public interface ITransactionRepository
-    {
-        List<Transaction> GetAll();
-        void Add(Transaction transaction);
-    }
-
-    // Concrete Repository Implementations
-    public class JsonMovieRepository : IMovieRepository
-    {
-        private readonly string _filePath;
-
-        public JsonMovieRepository(string filePath)
-        {
-            _filePath = filePath;
-        }
-
-        public List<Movie> GetAll()
-        {
-            if (!File.Exists(_filePath)) return new List<Movie>();
-            string json = File.ReadAllText(_filePath);
-            return JsonConvert.DeserializeObject<List<Movie>>(json) ?? new List<Movie>();
-        }
-    }
-
-    public class JsonSeatRepository : ISeatRepository
-    {
-        private readonly string _filePath;
-
-        public JsonSeatRepository(string filePath)
-        {
-            _filePath = filePath;
-        }
-
-        public Seat Get()
-        {
-            if (!File.Exists(_filePath)) return new Seat();
-            string json = File.ReadAllText(_filePath);
-            return JsonConvert.DeserializeObject<Seat>(json) ?? new Seat();
-        }
-
-        public void Save(Seat data)
-        {
-            string json = JsonConvert.SerializeObject(data, Formatting.Indented);
-            File.WriteAllText(_filePath, json);
-        }
-    }
-
-    public class JsonTransactionRepository : ITransactionRepository
-    {
-        private readonly string _filePath;
-
-        public JsonTransactionRepository(string filePath)
-        {
-            _filePath = filePath;
-        }
-
-        public List<Transaction> GetAll()
-        {
-            if (!File.Exists(_filePath)) return new List<Transaction>();
-            string json = File.ReadAllText(_filePath);
-            return JsonConvert.DeserializeObject<List<Transaction>>(json) ?? new List<Transaction>();
-        }
-
-        public void Add(Transaction transaction)
-        {
-            var transactions = GetAll();
-            transaction.Id = transactions.Count + 1;
-            transactions.Add(transaction);
-
-            string updatedJson = JsonConvert.SerializeObject(transactions, Formatting.Indented);
-            File.WriteAllText(_filePath, updatedJson);
-        }
-    }
-
-    // Service Layer
-    public class TicketService
-    {
-        private readonly IMovieRepository _movieRepository;
-        private readonly ISeatRepository _seatRepository;
-        private readonly ITransactionRepository _transactionRepository;
-
-        public TicketService(
-            IMovieRepository movieRepository,
-            ISeatRepository seatRepository,
-            ITransactionRepository transactionRepository)
-        {
-            _movieRepository = movieRepository;
-            _seatRepository = seatRepository;
-            _transactionRepository = transactionRepository;
-        }
-
-        public List<Movie> GetAvailableMovies()
-        {
-            return _movieRepository.GetAll();
-        }
-
-        public Seat GetSeatData()
-        {
-            return _seatRepository.Get();
-        }
-
-        public void SaveSeatData(Seat data)
-        {
-            _seatRepository.Save(data);
-        }
-
-        public void SaveTransaction(Transaction transaction)
-        {
-            _transactionRepository.Add(transaction);
-        }
-
-        public List<Transaction> GetTransactionHistory()
-        {
-            return _transactionRepository.GetAll();
-        }
-
-        public List<string> GenerateAllSeats()
-        {
-            var result = new List<string>();
-            char[] rows = { 'A', 'B', 'C', 'D' };
-            for (int i = 1; i <= 5; i++)
-            {
-                foreach (var row in rows)
-                {
-                    result.Add($"{row}{i}");
-                }
-            }
-            return result;
-        }
-    }
-
     public class Program
     {
         static string movieFile = "movies.json";
@@ -186,58 +43,48 @@
         // Flag to detect if the program is running in a test environment
         public static bool IsTesting = false;
 
-        private static TicketService _ticketService;
-
         public static void Main()
         {
-            // Initialize repositories
-            var movieRepo = new JsonMovieRepository(movieFile);
-            var seatRepo = new JsonSeatRepository(seatFile);
-            var transactionRepo = new JsonTransactionRepository(transactionFile);
-
-            // Initialize service
-            _ticketService = new TicketService(movieRepo, seatRepo, transactionRepo);
-
             RunMenuLoop();
         }
 
         public static void RunMenuLoop()
         {
             var menuActions = new Dictionary<string, Action>
+    {
+        { "1", () => {
+            ShowMovies();
+            if (!IsTesting)
             {
-                { "1", () => {
-                    ShowMovies();
-                    if (!IsTesting)
-                    {
-                        Console.WriteLine("\n  Tekan Enter untuk kembali ke menu...");
-                        Console.ReadLine();
-                    }
-                }},
-                { "2", () => {
-                    bool ulang;
-                    do
-                    {
-                        OrderTicket();
-                        if (IsTesting) break;
+                Console.WriteLine("\n  Tekan Enter untuk kembali ke menu...");
+                Console.ReadLine();
+            }
+        }},
+        { "2", () => {
+            bool ulang;
+            do
+            {
+                OrderTicket();
+                if (IsTesting) break;
 
-                        Console.Write("\n  Ingin memesan lagi? (y/n): ");
-                        string lagi = Console.ReadLine()?.ToLower();
-                        ulang = lagi == "y";
-                    } while (ulang);
-                }},
-                { "3", () => {
-                    ShowTransactionHistory();
-                    if (!IsTesting)
-                    {
-                        Console.WriteLine("\n  Tekan Enter untuk kembali ke menu...");
-                        Console.ReadLine();
-                    }
-                }},
-                { "4", () => {
-                    if (!IsTesting)
-                        Environment.Exit(0);
-                }}
-            };
+                Console.Write("\n  Ingin memesan lagi? (y/n): ");
+                string lagi = Console.ReadLine()?.ToLower();
+                ulang = lagi == "y";
+            } while (ulang);
+        }},
+        { "3", () => {
+            ShowTransactionHistory();
+            if (!IsTesting)
+            {
+                Console.WriteLine("\n  Tekan Enter untuk kembali ke menu...");
+                Console.ReadLine();
+            }
+        }},
+        { "4", () => {
+            if (!IsTesting)
+                Environment.Exit(0);
+        }}
+    };
 
             while (true)
             {
@@ -272,9 +119,30 @@
             }
         }
 
+
+        static List<Movie> GetMovies()
+        {
+            if (!File.Exists(movieFile)) return new List<Movie>();
+            string json = File.ReadAllText(movieFile);
+            return JsonConvert.DeserializeObject<List<Movie>>(json) ?? new List<Movie>();
+        }
+
+        static Seat GetSeatData()
+        {
+            if (!File.Exists(seatFile)) return new Seat();
+            string json = File.ReadAllText(seatFile);
+            return JsonConvert.DeserializeObject<Seat>(json) ?? new Seat();
+        }
+
+        static void SaveSeatData(Seat data)
+        {
+            string json = JsonConvert.SerializeObject(data, Formatting.Indented);
+            File.WriteAllText(seatFile, json);
+        }
+
         static void ShowMovies()
         {
-            var movies = _ticketService.GetAvailableMovies();
+            var movies = GetMovies();
             Console.WriteLine("\n  <> Daftar Film yang Tersedia:");
             foreach (var movie in movies)
             {
@@ -285,8 +153,8 @@
 
         static void OrderTicket()
         {
-            var movies = _ticketService.GetAvailableMovies();
-            var seatData = _ticketService.GetSeatData();
+            var movies = GetMovies();
+            var seatData = GetSeatData();
 
             Console.WriteLine("\n  <> Pilih Film:");
             foreach (var movie in movies)
@@ -331,7 +199,8 @@
             Console.WriteLine("      " + (bookedSeats.Count > 0 ? string.Join(", ", bookedSeats) : "Belum ada kursi yang dipesan."));
 
             Console.WriteLine("\n  <> Kursi yang tersedia:");
-            List<string> availableSeats = _ticketService.GenerateAllSeats().FindAll(s => !bookedSeats.Contains(s));
+            List<string> allSeats = GenerateAllSeats();
+            List<string> availableSeats = allSeats.FindAll(s => !bookedSeats.Contains(s));
             Console.WriteLine("      " + string.Join(", ", availableSeats));
 
             Console.Write("\n  Berapa tiket yang ingin dibeli? ");
@@ -365,7 +234,7 @@
             string buyer = Console.ReadLine();
 
             seatData.MovieScheduleSeats[movieId][selectedSchedule].AddRange(seats);
-            _ticketService.SaveSeatData(seatData);
+            SaveSeatData(seatData);
 
             int hargaPerTiket = 50000;
             int totalHarga = hargaPerTiket * ticketCount;
@@ -380,7 +249,7 @@
                 Price = totalHarga,
                 Timestamp = DateTime.Now
             };
-            _ticketService.SaveTransaction(transaction);
+            SaveTransaction(transaction);
 
             Console.WriteLine("\n  <> Pemesanan Berhasil!");
             Console.WriteLine($"      Film   : {selectedMovie.Title}");
@@ -390,9 +259,46 @@
             Console.WriteLine($"      Total  : Rp{totalHarga:N0}");
         }
 
+        static List<string> GenerateAllSeats()
+        {
+            var result = new List<string>();
+            char[] rows = { 'A', 'B', 'C', 'D' };
+            for (int i = 1; i <= 5; i++)
+            {
+                foreach (var row in rows)
+                {
+                    result.Add($"{row}{i}");
+                }
+            }
+            return result;
+        }
+
+        static void SaveTransaction(Transaction transaction)
+        {
+            List<Transaction> transactions = new List<Transaction>();
+            if (File.Exists(transactionFile))
+            {
+                string json = File.ReadAllText(transactionFile);
+                transactions = JsonConvert.DeserializeObject<List<Transaction>>(json) ?? new List<Transaction>();
+            }
+
+            transaction.Id = transactions.Count + 1;
+            transactions.Add(transaction);
+
+            string updatedJson = JsonConvert.SerializeObject(transactions, Formatting.Indented);
+            File.WriteAllText(transactionFile, updatedJson);
+        }
+
         static void ShowTransactionHistory()
         {
-            var transactions = _ticketService.GetTransactionHistory();
+            if (!File.Exists(transactionFile))
+            {
+                Console.WriteLine("\n  <> Belum ada transaksi yang tercatat.");
+                return;
+            }
+
+            string json = File.ReadAllText(transactionFile);
+            var transactions = JsonConvert.DeserializeObject<List<Transaction>>(json) ?? new List<Transaction>();
 
             if (transactions.Count == 0)
             {

@@ -95,5 +95,56 @@
     "Buyer": "Agil",
     "Price": 50000,
     "Timestamp": "2025-05-03T09:52:03.8508753+07:00"
+  },
+  {
+    "Id": 9,
+    "MovieId": 1,
+    "MovieTitle": "Inception",
+    "Schedule": "10:00",
+    "Seats": [
+      "B1"
+    ],
+    "Buyer": "Juna",
+    "Price": 50000,
+    "Timestamp": "2025-05-08T20:45:58.0968992+07:00"
+  },
+  {
+    "Id": 10,
+    "MovieId": 3,
+    "MovieTitle": "The Dark Knight",
+    "Schedule": "16:00",
+    "Seats": [
+      "A1",
+      "A2",
+      "A3",
+      "A4"
+    ],
+    "Buyer": "Agil",
+    "Price": 200000,
+    "Timestamp": "2025-05-08T20:59:04.8964464+07:00"
+  },
+  {
+    "Id": 11,
+    "MovieId": 2,
+    "MovieTitle": "Interstellar",
+    "Schedule": "15:00",
+    "Seats": [
+      "A1"
+    ],
+    "Buyer": "aziz",
+    "Price": 50000,
+    "Timestamp": "2025-05-08T20:59:41.367866+07:00"
+  },
+  {
+    "Id": 12,
+    "MovieId": 2,
+    "MovieTitle": "Interstellar",
+    "Schedule": "15:00",
+    "Seats": [
+      "B1"
+    ],
+    "Buyer": "Agil",
+    "Price": 50000,
+    "Timestamp": "2025-06-02T04:46:43.7542034+07:00"
   }
 ]
