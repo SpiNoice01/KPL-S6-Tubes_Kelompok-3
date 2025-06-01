@@ -3,21 +3,21 @@
     "id": 1,
     "title": "Inception",
     "genre": "Sci-Fi",
-    "duration": 148,
-    "schedule": ["10:00", "14:00", "18:00"]
+    "durationMinutes": 148,
+    "schedules": ["10:00", "14:00", "18:00"]
   },
   {
     "id": 2,
     "title": "Interstellar",
     "genre": "Sci-Fi",
-    "duration": 169,
-    "schedule": ["11:00", "15:00", "19:00"]
+    "durationMinutes": 169,
+    "schedules": ["11:00", "15:00", "19:00"]
   },
   {
     "id": 3,
     "title": "The Dark Knight",
     "genre": "Action",
-    "duration": 152,
-    "schedule": ["12:00", "16:00", "20:00"]
+    "durationMinutes": 152,
+    "schedules": ["12:00", "16:00", "20:00"]
   }
 ]

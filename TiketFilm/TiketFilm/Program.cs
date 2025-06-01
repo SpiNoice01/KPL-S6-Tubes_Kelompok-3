@@ -1,417 +1,700 @@
-﻿namespace TiketFilmCore
-{
-    using System;
-    using System.Collections.Generic;
-    using System.IO;
-    using Newtonsoft.Json;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using Newtonsoft.Json;
 
-    // Model Film
+namespace CinemaTicketBookingSystem
+{
+    // Domain Models
     public class Movie
     {
-        public int Id { get; set; }
-        public string Title { get; set; }
-        public string Genre { get; set; }
-        public int Duration { get; set; } // dalam menit
-        public List<string> Schedule { get; set; }
+        public int Id { get; }
+        public string Title { get; }
+        public string Genre { get; }
+        public int DurationMinutes { get; }
+        public IReadOnlyList<string> Schedules { get; }
+
+        public Movie(int id, string title, string genre, int durationMinutes, List<string> schedules)
+        {
+            Id = id;
+            Title = title ?? throw new ArgumentNullException(nameof(title));
+            Genre = genre ?? throw new ArgumentNullException(nameof(genre));
+            DurationMinutes = durationMinutes > 0 ? durationMinutes : throw new ArgumentException("Duration must be positive");
+            Schedules = schedules?.AsReadOnly() ?? throw new ArgumentNullException(nameof(schedules));
+        }
     }
 
-    // Model Kursi
-    public class Seat
+    public class SeatReservation
     {
-        public Dictionary<int, Dictionary<string, List<string>>> MovieScheduleSeats { get; set; } = new();
+        public Dictionary<int, Dictionary<string, List<string>>> MovieScheduleSeats { get; } = new();
+
+        public void ReserveSeats(int movieId, string schedule, List<string> seats)
+        {
+            if (!MovieScheduleSeats.ContainsKey(movieId))
+            {
+                MovieScheduleSeats[movieId] = new Dictionary<string, List<string>>();
+            }
+
+            if (!MovieScheduleSeats[movieId].ContainsKey(schedule))
+            {
+                MovieScheduleSeats[movieId][schedule] = new List<string>();
+            }
+
+            MovieScheduleSeats[movieId][schedule].AddRange(seats);
+        }
     }
 
-    // Model Transaksi
-    public class Transaction
+    public class BookingTransaction
     {
-        public int Id { get; set; }
-        public int MovieId { get; set; }
-        public string MovieTitle { get; set; }
-        public string Schedule { get; set; }
-        public List<string> Seats { get; set; }
-        public string Buyer { get; set; }
-        public int Price { get; set; }
-        public DateTime Timestamp { get; set; }
+        public int Id { get; }
+        public int MovieId { get; }
+        public string MovieTitle { get; }
+        public string Schedule { get; }
+        public IReadOnlyList<string> Seats { get; }
+        public string BuyerName { get; }
+        public int TotalPrice { get; }
+        public DateTime TransactionTime { get; }
+
+        public BookingTransaction(int id, int movieId, string movieTitle, string schedule,
+                                List<string> seats, string buyerName, int totalPrice, DateTime transactionTime)
+        {
+            Id = id;
+            MovieId = movieId;
+            MovieTitle = movieTitle ?? throw new ArgumentNullException(nameof(movieTitle));
+            Schedule = schedule ?? throw new ArgumentNullException(nameof(schedule));
+            Seats = seats?.AsReadOnly() ?? throw new ArgumentNullException(nameof(seats));
+            BuyerName = buyerName ?? throw new ArgumentNullException(nameof(buyerName));
+            TotalPrice = totalPrice >= 0 ? totalPrice : throw new ArgumentException("Price cannot be negative");
+            TransactionTime = transactionTime;
+        }
     }
 
-    // Repository Interface
+    // Interfaces
     public interface IMovieRepository
     {
-        List<Movie> GetAll();
+        IReadOnlyList<Movie> GetAllMovies();
     }
 
     public interface ISeatRepository
     {
-        Seat Get();
-        void Save(Seat data);
+        SeatReservation GetSeatReservations();
+        void SaveSeatReservations(SeatReservation reservations);
     }
 
-    public interface ITransactionRepository
+    public interface IBookingRepository
     {
-        List<Transaction> GetAll();
-        void Add(Transaction transaction);
+        IReadOnlyList<BookingTransaction> GetAllTransactions();
+        void AddTransaction(BookingTransaction transaction);
     }
 
-    // Concrete Repository Implementations
+    // Concrete Repositories
     public class JsonMovieRepository : IMovieRepository
     {
-        private readonly string _filePath;
+        private const string MovieFile = "movies.json";
 
-        public JsonMovieRepository(string filePath)
+        public IReadOnlyList<Movie> GetAllMovies()
         {
-            _filePath = filePath;
-        }
+            if (!File.Exists(MovieFile))
+                return new List<Movie>().AsReadOnly();
 
-        public List<Movie> GetAll()
-        {
-            if (!File.Exists(_filePath)) return new List<Movie>();
-            string json = File.ReadAllText(_filePath);
-            return JsonConvert.DeserializeObject<List<Movie>>(json) ?? new List<Movie>();
+            try
+            {
+                var movies = JsonConvert.DeserializeObject<List<Movie>>(File.ReadAllText(MovieFile)) ?? new List<Movie>();
+                return movies.AsReadOnly();
+            }
+            catch (Exception ex)
+            {
+                throw new RepositoryException("Failed to load movies", ex);
+            }
         }
     }
 
     public class JsonSeatRepository : ISeatRepository
     {
-        private readonly string _filePath;
+        private const string SeatFile = "seats.json";
 
-        public JsonSeatRepository(string filePath)
+        public SeatReservation GetSeatReservations()
         {
-            _filePath = filePath;
+            if (!File.Exists(SeatFile))
+                return new SeatReservation();
+
+            try
+            {
+                return JsonConvert.DeserializeObject<SeatReservation>(File.ReadAllText(SeatFile)) ?? new SeatReservation();
+            }
+            catch (Exception ex)
+            {
+                throw new RepositoryException("Failed to load seat reservations", ex);
+            }
         }
 
-        public Seat Get()
+        public void SaveSeatReservations(SeatReservation reservations)
         {
-            if (!File.Exists(_filePath)) return new Seat();
-            string json = File.ReadAllText(_filePath);
-            return JsonConvert.DeserializeObject<Seat>(json) ?? new Seat();
-        }
-
-        public void Save(Seat data)
-        {
-            string json = JsonConvert.SerializeObject(data, Formatting.Indented);
-            File.WriteAllText(_filePath, json);
+            try
+            {
+                File.WriteAllText(SeatFile, JsonConvert.SerializeObject(reservations, Formatting.Indented));
+            }
+            catch (Exception ex)
+            {
+                throw new RepositoryException("Failed to save seat reservations", ex);
+            }
         }
     }
 
-    public class JsonTransactionRepository : ITransactionRepository
+    public class JsonBookingRepository : IBookingRepository
     {
-        private readonly string _filePath;
+        private const string BookingFile = "bookings.json";
 
-        public JsonTransactionRepository(string filePath)
+        public IReadOnlyList<BookingTransaction> GetAllTransactions()
         {
-            _filePath = filePath;
+            if (!File.Exists(BookingFile))
+                return new List<BookingTransaction>().AsReadOnly();
+
+            try
+            {
+                return JsonConvert.DeserializeObject<List<BookingTransaction>>(File.ReadAllText(BookingFile))?.AsReadOnly()
+                    ?? new List<BookingTransaction>().AsReadOnly();
+            }
+            catch (Exception ex)
+            {
+                throw new RepositoryException("Failed to load booking transactions", ex);
+            }
         }
 
-        public List<Transaction> GetAll()
+        public void AddTransaction(BookingTransaction transaction)
         {
-            if (!File.Exists(_filePath)) return new List<Transaction>();
-            string json = File.ReadAllText(_filePath);
-            return JsonConvert.DeserializeObject<List<Transaction>>(json) ?? new List<Transaction>();
-        }
-
-        public void Add(Transaction transaction)
-        {
-            var transactions = GetAll();
-            transaction.Id = transactions.Count + 1;
+            var transactions = new List<BookingTransaction>(GetAllTransactions());
             transactions.Add(transaction);
 
-            string updatedJson = JsonConvert.SerializeObject(transactions, Formatting.Indented);
-            File.WriteAllText(_filePath, updatedJson);
+            try
+            {
+                File.WriteAllText(BookingFile, JsonConvert.SerializeObject(transactions, Formatting.Indented));
+            }
+            catch (Exception ex)
+            {
+                throw new RepositoryException("Failed to save booking transactions", ex);
+            }
         }
     }
 
-    // Service Layer
-    public class TicketService
+    // Exceptions
+    public class RepositoryException : Exception
+    {
+        public RepositoryException(string message, Exception innerException)
+            : base(message, innerException) { }
+    }
+
+    public class BookingException : Exception
+    {
+        public BookingException(string message) : base(message) { }
+    }
+
+    // Services
+    public class MovieService
     {
         private readonly IMovieRepository _movieRepository;
+
+        public MovieService(IMovieRepository movieRepository)
+        {
+            _movieRepository = movieRepository ?? throw new ArgumentNullException(nameof(movieRepository));
+        }
+
+        public IReadOnlyList<Movie> GetAvailableMovies()
+        {
+            return _movieRepository.GetAllMovies();
+        }
+
+        public Movie GetMovieById(int movieId)
+        {
+            var movies = _movieRepository.GetAllMovies();
+            return movies.FirstOrDefault(m => m.Id == movieId);
+        }
+    }
+
+    public class SeatService
+    {
+        private const int Rows = 4; // A-D
+        private const int SeatsPerRow = 5;
         private readonly ISeatRepository _seatRepository;
-        private readonly ITransactionRepository _transactionRepository;
 
-        public TicketService(
-            IMovieRepository movieRepository,
-            ISeatRepository seatRepository,
-            ITransactionRepository transactionRepository)
+        public SeatService(ISeatRepository seatRepository)
         {
-            _movieRepository = movieRepository;
-            _seatRepository = seatRepository;
-            _transactionRepository = transactionRepository;
+            _seatRepository = seatRepository ?? throw new ArgumentNullException(nameof(seatRepository));
         }
 
-        public List<Movie> GetAvailableMovies()
+        public IReadOnlyList<string> GetAvailableSeats(int movieId, string schedule)
         {
-            return _movieRepository.GetAll();
+            if (string.IsNullOrWhiteSpace(schedule))
+                throw new ArgumentException("Schedule cannot be empty", nameof(schedule));
+
+            var allSeats = GenerateAllSeats();
+            var reservedSeats = GetReservedSeats(movieId, schedule);
+
+            return allSeats.Except(reservedSeats).ToList().AsReadOnly();
         }
 
-        public Seat GetSeatData()
+        public void ReserveSeats(int movieId, string schedule, List<string> seats)
         {
-            return _seatRepository.Get();
+            if (seats == null || !seats.Any())
+                throw new ArgumentException("At least one seat must be reserved", nameof(seats));
+
+            var reservations = _seatRepository.GetSeatReservations();
+            reservations.ReserveSeats(movieId, schedule, seats);
+            _seatRepository.SaveSeatReservations(reservations);
         }
 
-        public void SaveSeatData(Seat data)
+        private IReadOnlyList<string> GetReservedSeats(int movieId, string schedule)
         {
-            _seatRepository.Save(data);
-        }
+            var reservations = _seatRepository.GetSeatReservations();
 
-        public void SaveTransaction(Transaction transaction)
-        {
-            _transactionRepository.Add(transaction);
-        }
-
-        public List<Transaction> GetTransactionHistory()
-        {
-            return _transactionRepository.GetAll();
-        }
-
-        public List<string> GenerateAllSeats()
-        {
-            var result = new List<string>();
-            char[] rows = { 'A', 'B', 'C', 'D' };
-            for (int i = 1; i <= 5; i++)
+            if (reservations.MovieScheduleSeats.TryGetValue(movieId, out var scheduleSeats) &&
+                scheduleSeats.TryGetValue(schedule, out var reservedSeats))
             {
-                foreach (var row in rows)
+                return reservedSeats.AsReadOnly();
+            }
+
+            return new List<string>().AsReadOnly();
+        }
+
+        private List<string> GenerateAllSeats()
+        {
+            var seats = new List<string>();
+            for (char row = 'A'; row < 'A' + Rows; row++)
+            {
+                for (int number = 1; number <= SeatsPerRow; number++)
                 {
-                    result.Add($"{row}{i}");
+                    seats.Add($"{row}{number}");
                 }
             }
-            return result;
+            return seats;
+        }
+    }
+
+    public class BookingService
+    {
+        private const int TicketPrice = 50000;
+        private readonly IBookingRepository _bookingRepository;
+        private readonly MovieService _movieService;
+        private readonly SeatService _seatService;
+
+        public BookingService(IBookingRepository bookingRepository, MovieService movieService, SeatService seatService)
+        {
+            _bookingRepository = bookingRepository ?? throw new ArgumentNullException(nameof(bookingRepository));
+            _movieService = movieService ?? throw new ArgumentNullException(nameof(movieService));
+            _seatService = seatService ?? throw new ArgumentNullException(nameof(seatService));
+        }
+
+        public BookingTransaction CreateBooking(int movieId, string schedule, List<string> seats, string buyerName)
+        {
+            ValidateBookingParameters(movieId, schedule, seats, buyerName);
+
+            var movie = _movieService.GetMovieById(movieId);
+            if (movie == null)
+                throw new BookingException("Movie not found");
+
+            if (!movie.Schedules.Contains(schedule))
+                throw new BookingException("Schedule not available for this movie");
+
+            var availableSeats = _seatService.GetAvailableSeats(movieId, schedule);
+            var invalidSeats = seats.Except(availableSeats).ToList();
+
+            if (invalidSeats.Any())
+                throw new BookingException($"Seats not available: {string.Join(", ", invalidSeats)}");
+
+            var totalPrice = CalculateTotalPrice(seats.Count);
+            var transaction = new BookingTransaction(
+                id: _bookingRepository.GetAllTransactions().Count + 1,
+                movieId: movieId,
+                movieTitle: movie.Title,
+                schedule: schedule,
+                seats: seats,
+                buyerName: buyerName,
+                totalPrice: totalPrice,
+                transactionTime: DateTime.Now
+            );
+
+            _seatService.ReserveSeats(movieId, schedule, seats);
+            _bookingRepository.AddTransaction(transaction);
+
+            return transaction;
+        }
+
+        public IReadOnlyList<BookingTransaction> GetTransactionHistory()
+        {
+            return _bookingRepository.GetAllTransactions();
+        }
+
+        private int CalculateTotalPrice(int ticketCount)
+        {
+            return ticketCount * TicketPrice;
+        }
+
+        private void ValidateBookingParameters(int movieId, string schedule, List<string> seats, string buyerName)
+        {
+            if (movieId <= 0) throw new ArgumentException("Invalid movie ID", nameof(movieId));
+            if (string.IsNullOrWhiteSpace(schedule)) throw new ArgumentException("Schedule cannot be empty", nameof(schedule));
+            if (seats == null || !seats.Any()) throw new ArgumentException("At least one seat must be selected", nameof(seats));
+            if (string.IsNullOrWhiteSpace(buyerName)) throw new ArgumentException("Buyer name cannot be empty", nameof(buyerName));
+        }
+    }
+
+    // UI Layer
+    public interface IUserInterface
+    {
+        void DisplayMessage(string message);
+        void DisplayMovies(IEnumerable<Movie> movies);
+        void DisplaySchedules(IEnumerable<string> schedules);
+        void DisplaySeats(IEnumerable<string> seats);
+        void DisplayBookingConfirmation(BookingTransaction transaction);
+        void DisplayTransactionHistory(IEnumerable<BookingTransaction> transactions);
+        string GetUserInput(string prompt);
+        int GetUserChoice(string prompt, int min, int max);
+        void ClearScreen();
+        void WaitForUser();
+    }
+
+    public class ConsoleUserInterface : IUserInterface
+    {
+        public void DisplayMessage(string message)
+        {
+            Console.WriteLine(message);
+        }
+
+        public void DisplayMovies(IEnumerable<Movie> movies)
+        {
+            Console.WriteLine("\nAvailable Movies:");
+            foreach (var movie in movies)
+            {
+                Console.WriteLine($"[{movie.Id}] {movie.Title} ({movie.Genre}) - {movie.DurationMinutes} mins");
+                Console.WriteLine($"  Schedules: {string.Join(", ", movie.Schedules)}");
+            }
+        }
+
+        public void DisplaySchedules(IEnumerable<string> schedules)
+        {
+            Console.WriteLine("\nAvailable Schedules:");
+            int index = 1;
+            foreach (var schedule in schedules)
+            {
+                Console.WriteLine($"[{index++}] {schedule}");
+            }
+        }
+
+        public void DisplaySeats(IEnumerable<string> seats)
+        {
+            Console.WriteLine("\nAvailable Seats:");
+            var seatList = seats.ToList();
+
+            for (int i = 0; i < seatList.Count; i++)
+            {
+                Console.Write($"{seatList[i]} ");
+                if ((i + 1) % 5 == 0) Console.WriteLine();
+            }
+            Console.WriteLine();
+        }
+
+        public void DisplayBookingConfirmation(BookingTransaction transaction)
+        {
+            Console.WriteLine("\nBooking Confirmation:");
+            Console.WriteLine($"Movie: {transaction.MovieTitle}");
+            Console.WriteLine($"Schedule: {transaction.Schedule}");
+            Console.WriteLine($"Seats: {string.Join(", ", transaction.Seats)}");
+            Console.WriteLine($"Name: {transaction.BuyerName}");
+            Console.WriteLine($"Total: Rp{transaction.TotalPrice:N0}");
+        }
+
+        public void DisplayTransactionHistory(IEnumerable<BookingTransaction> transactions)
+        {
+            Console.WriteLine("\nTransaction History:");
+            foreach (var t in transactions)
+            {
+                Console.WriteLine($"ID: {t.Id}");
+                Console.WriteLine($"Movie: {t.MovieTitle}");
+                Console.WriteLine($"Schedule: {t.Schedule}");
+                Console.WriteLine($"Seats: {string.Join(", ", t.Seats)}");
+                Console.WriteLine($"Name: {t.BuyerName}");
+                Console.WriteLine($"Total: Rp{t.TotalPrice:N0}");
+                Console.WriteLine($"Time: {t.TransactionTime}");
+                Console.WriteLine(new string('-', 40));
+            }
+        }
+
+        public string GetUserInput(string prompt)
+        {
+            Console.Write(prompt);
+            return Console.ReadLine()?.Trim();
+        }
+
+        public int GetUserChoice(string prompt, int min, int max)
+        {
+            while (true)
+            {
+                Console.Write(prompt);
+                if (int.TryParse(Console.ReadLine(), out var choice) && choice >= min && choice <= max)
+                {
+                    return choice;
+                }
+                Console.WriteLine($"Invalid input. Please enter a number between {min} and {max}.");
+            }
+        }
+
+        public void ClearScreen()
+        {
+            try
+            {
+                Console.Clear();
+            }
+            catch { /* Ignore if clearing fails */ }
+        }
+
+        public void WaitForUser()
+        {
+            Console.WriteLine("\nPress Enter to continue...");
+            Console.ReadLine();
+        }
+    }
+
+    public class BookingController
+    {
+        private readonly MovieService _movieService;
+        private readonly BookingService _bookingService;
+        private readonly SeatService _seatService;
+        private readonly IUserInterface _ui;
+
+        public BookingController(MovieService movieService,
+                              BookingService bookingService,
+                              SeatService seatService,
+                              IUserInterface ui)
+        {
+            _movieService = movieService ?? throw new ArgumentNullException(nameof(movieService));
+            _bookingService = bookingService ?? throw new ArgumentNullException(nameof(bookingService));
+            _seatService = seatService ?? throw new ArgumentNullException(nameof(seatService));
+            _ui = ui ?? throw new ArgumentNullException(nameof(ui));
+        }
+
+        public void ProcessTicketOrder()
+        {
+            try
+            {
+                var movie = SelectMovie();
+                if (movie == null) return;
+
+                var schedule = SelectSchedule(movie);
+                if (string.IsNullOrEmpty(schedule)) return;
+
+                var seats = SelectSeats(movie.Id, schedule);
+                if (seats == null || !seats.Any()) return;
+
+                var buyerName = GetBuyerName();
+                var transaction = _bookingService.CreateBooking(movie.Id, schedule, seats, buyerName);
+
+                _ui.DisplayBookingConfirmation(transaction);
+            }
+            catch (Exception ex)
+            {
+                _ui.DisplayMessage($"Error: {ex.Message}");
+            }
+        }
+
+        private Movie SelectMovie()
+        {
+            var movies = _movieService.GetAvailableMovies();
+            if (!movies.Any())
+            {
+                _ui.DisplayMessage("No movies available.");
+                return null;
+            }
+
+            _ui.DisplayMovies(movies);
+            int choice = _ui.GetUserChoice("\nEnter Movie ID (0 to cancel): ", 0, movies.Max(m => m.Id));
+
+            return choice == 0 ? null : _movieService.GetMovieById(choice);
+        }
+
+        private string SelectSchedule(Movie movie)
+        {
+            if (!movie.Schedules.Any())
+            {
+                _ui.DisplayMessage("No schedules available for this movie.");
+                return null;
+            }
+
+            _ui.DisplaySchedules(movie.Schedules);
+            int choice = _ui.GetUserChoice("\nSelect schedule (0 to cancel): ", 0, movie.Schedules.Count);
+
+            return choice == 0 ? null : movie.Schedules[choice - 1];
+        }
+
+        private List<string> SelectSeats(int movieId, string schedule)
+        {
+            var availableSeats = _seatService.GetAvailableSeats(movieId, schedule).ToList();
+            if (!availableSeats.Any())
+            {
+                _ui.DisplayMessage("No seats available for this schedule.");
+                return null;
+            }
+
+            _ui.DisplaySeats(availableSeats);
+            int ticketCount = _ui.GetUserChoice($"\nHow many tickets? (1-{availableSeats.Count}, 0 to cancel): ", 0, availableSeats.Count);
+            if (ticketCount == 0) return null;
+
+            var selectedSeats = new List<string>();
+            for (int i = 0; i < ticketCount; i++)
+            {
+                string seat;
+                do
+                {
+                    seat = _ui.GetUserInput($"Select seat for ticket {i + 1}: ").ToUpper();
+
+                    if (!availableSeats.Contains(seat))
+                    {
+                        _ui.DisplayMessage("Seat not available.");
+                        seat = null;
+                    }
+                    else if (selectedSeats.Contains(seat))
+                    {
+                        _ui.DisplayMessage("Seat already selected.");
+                        seat = null;
+                    }
+                } while (seat == null);
+
+                selectedSeats.Add(seat);
+            }
+
+            return selectedSeats;
+        }
+
+        private string GetBuyerName()
+        {
+            string name;
+            do
+            {
+                name = _ui.GetUserInput("\nYour name: ");
+                if (string.IsNullOrWhiteSpace(name))
+                {
+                    _ui.DisplayMessage("Name cannot be empty.");
+                }
+            } while (string.IsNullOrWhiteSpace(name));
+
+            return name;
+        }
+    }
+
+    public class CinemaApp
+    {
+        private readonly MovieService _movieService;
+        private readonly BookingService _bookingService;
+        private readonly SeatService _seatService;
+        private readonly IUserInterface _ui;
+        private readonly BookingController _bookingController;
+
+        public CinemaApp(MovieService movieService,
+                        BookingService bookingService,
+                        SeatService seatService,
+                        IUserInterface ui)
+        {
+            _movieService = movieService ?? throw new ArgumentNullException(nameof(movieService));
+            _bookingService = bookingService ?? throw new ArgumentNullException(nameof(bookingService));
+            _seatService = seatService ?? throw new ArgumentNullException(nameof(seatService));
+            _ui = ui ?? throw new ArgumentNullException(nameof(ui));
+            _bookingController = new BookingController(movieService, bookingService, seatService, ui);
+        }
+
+        public void Run()
+        {
+            while (true)
+            {
+                _ui.ClearScreen();
+                DisplayMainMenu();
+
+                var choice = _ui.GetUserInput("Choose option: ");
+
+                switch (choice)
+                {
+                    case "1":
+                        ShowMovies();
+                        _ui.WaitForUser();
+                        break;
+                    case "2":
+                        BookTickets();
+                        break;
+                    case "3":
+                        ShowTransactionHistory();
+                        _ui.WaitForUser();
+                        break;
+                    case "4":
+                        return;
+                    default:
+                        _ui.DisplayMessage("Invalid choice!");
+                        _ui.WaitForUser();
+                        break;
+                }
+            }
+        }
+
+        private void DisplayMainMenu()
+        {
+            _ui.DisplayMessage("Cinema Ticket Booking System");
+            _ui.DisplayMessage("1. View Movies");
+            _ui.DisplayMessage("2. Book Tickets");
+            _ui.DisplayMessage("3. View Transaction History");
+            _ui.DisplayMessage("4. Exit");
+        }
+
+        private void ShowMovies()
+        {
+            var movies = _movieService.GetAvailableMovies();
+            if (!movies.Any())
+            {
+                _ui.DisplayMessage("\nNo movies available.");
+                return;
+            }
+
+            _ui.DisplayMovies(movies);
+        }
+
+        private void BookTickets()
+        {
+            bool bookAgain;
+            do
+            {
+                _bookingController.ProcessTicketOrder();
+                bookAgain = _ui.GetUserInput("\nBook another ticket? (y/n): ").ToLower() == "y";
+            } while (bookAgain);
+        }
+
+        private void ShowTransactionHistory()
+        {
+            var transactions = _bookingService.GetTransactionHistory();
+            if (!transactions.Any())
+            {
+                _ui.DisplayMessage("\nNo transaction history found.");
+                return;
+            }
+
+            _ui.DisplayTransactionHistory(transactions);
         }
     }
 
     public class Program
     {
-        static string movieFile = "movies.json";
-        static string seatFile = "seats.json";
-        static string transactionFile = "transactions.json";
-
-        // Flag to detect if the program is running in a test environment
-        public static bool IsTesting = false;
-
-        private static TicketService _ticketService;
-
         public static void Main()
         {
-            // Initialize repositories
-            var movieRepo = new JsonMovieRepository(movieFile);
-            var seatRepo = new JsonSeatRepository(seatFile);
-            var transactionRepo = new JsonTransactionRepository(transactionFile);
+            // Initialize dependencies
+            var movieRepo = new JsonMovieRepository();
+            var seatRepo = new JsonSeatRepository();
+            var bookingRepo = new JsonBookingRepository();
 
-            // Initialize service
-            _ticketService = new TicketService(movieRepo, seatRepo, transactionRepo);
+            var movieService = new MovieService(movieRepo);
+            var seatService = new SeatService(seatRepo);
+            var bookingService = new BookingService(bookingRepo, movieService, seatService);
 
-            RunMenuLoop();
-        }
+            var ui = new ConsoleUserInterface();
+            var app = new CinemaApp(movieService, bookingService, seatService, ui);
 
-        public static void RunMenuLoop()
-        {
-            var menuActions = new Dictionary<string, Action>
-            {
-                { "1", () => {
-                    ShowMovies();
-                    if (!IsTesting)
-                    {
-                        Console.WriteLine("\n  Tekan Enter untuk kembali ke menu...");
-                        Console.ReadLine();
-                    }
-                }},
-                { "2", () => {
-                    bool ulang;
-                    do
-                    {
-                        OrderTicket();
-                        if (IsTesting) break;
-
-                        Console.Write("\n  Ingin memesan lagi? (y/n): ");
-                        string lagi = Console.ReadLine()?.ToLower();
-                        ulang = lagi == "y";
-                    } while (ulang);
-                }},
-                { "3", () => {
-                    ShowTransactionHistory();
-                    if (!IsTesting)
-                    {
-                        Console.WriteLine("\n  Tekan Enter untuk kembali ke menu...");
-                        Console.ReadLine();
-                    }
-                }},
-                { "4", () => {
-                    if (!IsTesting)
-                        Environment.Exit(0);
-                }}
-            };
-
-            while (true)
-            {
-                try
-                {
-                    if (!IsTesting)
-                        Console.Clear(); // Only clear console if not in test mode
-                }
-                catch
-                {
-                    // Ignore if Console.Clear() throws an error (e.g. in test)
-                }
-
-                Console.WriteLine("  <> Sistem Pemesanan Tiket Bioskop CLI");
-                Console.WriteLine("  1. Lihat Film");
-                Console.WriteLine("  2. Pesan Tiket");
-                Console.WriteLine("  3. Lihat History Pembelian");
-                Console.WriteLine("  4. Keluar");
-                Console.Write("  Pilih menu: ");
-                string choice = IsTesting ? "4" : Console.ReadLine();
-
-                if (menuActions.ContainsKey(choice))
-                {
-                    menuActions[choice].Invoke();
-                    if (IsTesting) break; // Exit after one menu execution in test
-                }
-                else
-                {
-                    Console.WriteLine("  <> Pilihan tidak valid!");
-                    if (!IsTesting) Console.ReadLine();
-                }
-            }
-        }
-
-        static void ShowMovies()
-        {
-            var movies = _ticketService.GetAvailableMovies();
-            Console.WriteLine("\n  <> Daftar Film yang Tersedia:");
-            foreach (var movie in movies)
-            {
-                Console.WriteLine($"      [{movie.Id}] {movie.Title} ({movie.Genre}) - {movie.Duration} menit");
-                Console.WriteLine("          Jadwal: " + string.Join(", ", movie.Schedule));
-            }
-        }
-
-        static void OrderTicket()
-        {
-            var movies = _ticketService.GetAvailableMovies();
-            var seatData = _ticketService.GetSeatData();
-
-            Console.WriteLine("\n  <> Pilih Film:");
-            foreach (var movie in movies)
-            {
-                Console.WriteLine($"      [{movie.Id}] {movie.Title}");
-            }
-
-            Console.Write("  Masukkan ID Film: ");
-            if (!int.TryParse(Console.ReadLine(), out int movieId) || !movies.Exists(m => m.Id == movieId))
-            {
-                Console.WriteLine("  <> Film tidak ditemukan!");
-                if (!IsTesting) Console.ReadLine();
-                return;
-            }
-
-            var selectedMovie = movies.Find(m => m.Id == movieId);
-            Console.WriteLine("\n  <> Pilih Jadwal:");
-            for (int i = 0; i < selectedMovie.Schedule.Count; i++)
-            {
-                Console.WriteLine($"      [{i + 1}] {selectedMovie.Schedule[i]}");
-            }
-
-            Console.Write("  Masukkan nomor jadwal: ");
-            if (!int.TryParse(Console.ReadLine(), out int scheduleIndex) || scheduleIndex < 1 || scheduleIndex > selectedMovie.Schedule.Count)
-            {
-                Console.WriteLine("  <> Jadwal tidak valid!");
-                if (!IsTesting) Console.ReadLine();
-                return;
-            }
-
-            string selectedSchedule = selectedMovie.Schedule[scheduleIndex - 1];
-
-            if (!seatData.MovieScheduleSeats.ContainsKey(movieId))
-                seatData.MovieScheduleSeats[movieId] = new Dictionary<string, List<string>>();
-
-            if (!seatData.MovieScheduleSeats[movieId].ContainsKey(selectedSchedule))
-                seatData.MovieScheduleSeats[movieId][selectedSchedule] = new List<string>();
-
-            var bookedSeats = seatData.MovieScheduleSeats[movieId][selectedSchedule];
-
-            Console.WriteLine("\n  <> Kursi yang sudah dipesan:");
-            Console.WriteLine("      " + (bookedSeats.Count > 0 ? string.Join(", ", bookedSeats) : "Belum ada kursi yang dipesan."));
-
-            Console.WriteLine("\n  <> Kursi yang tersedia:");
-            List<string> availableSeats = _ticketService.GenerateAllSeats().FindAll(s => !bookedSeats.Contains(s));
-            Console.WriteLine("      " + string.Join(", ", availableSeats));
-
-            Console.Write("\n  Berapa tiket yang ingin dibeli? ");
-            if (!int.TryParse(Console.ReadLine(), out int ticketCount) || ticketCount < 1)
-            {
-                Console.WriteLine("  <> Jumlah tiket tidak valid!");
-                if (!IsTesting) Console.ReadLine();
-                return;
-            }
-
-            List<string> seats = new();
-            for (int i = 0; i < ticketCount; i++)
-            {
-                while (true)
-                {
-                    Console.Write($"  Pilih Kursi untuk tiket {i + 1} (contoh A1 - D5): ");
-                    string seat = Console.ReadLine().ToUpper();
-
-                    if (!availableSeats.Contains(seat))
-                    {
-                        Console.WriteLine("  <> Kursi tidak tersedia!");
-                        continue;
-                    }
-
-                    seats.Add(seat);
-                    break;
-                }
-            }
-
-            Console.Write("\n  Masukkan nama Anda: ");
-            string buyer = Console.ReadLine();
-
-            seatData.MovieScheduleSeats[movieId][selectedSchedule].AddRange(seats);
-            _ticketService.SaveSeatData(seatData);
-
-            int hargaPerTiket = 50000;
-            int totalHarga = hargaPerTiket * ticketCount;
-
-            var transaction = new Transaction
-            {
-                MovieId = selectedMovie.Id,
-                MovieTitle = selectedMovie.Title,
-                Schedule = selectedSchedule,
-                Seats = seats,
-                Buyer = buyer,
-                Price = totalHarga,
-                Timestamp = DateTime.Now
-            };
-            _ticketService.SaveTransaction(transaction);
-
-            Console.WriteLine("\n  <> Pemesanan Berhasil!");
-            Console.WriteLine($"      Film   : {selectedMovie.Title}");
-            Console.WriteLine($"      Jadwal : {selectedSchedule}");
-            Console.WriteLine($"      Kursi  : {string.Join(", ", seats)}");
-            Console.WriteLine($"      Nama   : {buyer}");
-            Console.WriteLine($"      Total  : Rp{totalHarga:N0}");
-        }
-
-        static void ShowTransactionHistory()
-        {
-            var transactions = _ticketService.GetTransactionHistory();
-
-            if (transactions.Count == 0)
-            {
-                Console.WriteLine("\n  <> Belum ada transaksi yang tercatat.");
-                return;
-            }
-
-            Console.WriteLine("\n  <> Riwayat Transaksi:");
-            foreach (var t in transactions)
-            {
-                Console.WriteLine($"  ID         : {t.Id}");
-                Console.WriteLine($"    Film     : {t.MovieTitle}");
-                Console.WriteLine($"    Jadwal   : {t.Schedule}");
-                Console.WriteLine($"    Kursi    : {(t.Seats != null ? string.Join(", ", t.Seats) : "Tidak ada kursi")}");
-                Console.WriteLine($"    Nama     : {t.Buyer}");
-                Console.WriteLine($"    Harga    : Rp{t.Price:N0}");
-                Console.WriteLine($"    Waktu    : {t.Timestamp}");
-                Console.WriteLine("  ---------------------------------------------");
-            }
+            // Run the application
+            app.Run();
         }
     }
 }

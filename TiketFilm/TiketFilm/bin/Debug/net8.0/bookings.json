@@ -1,0 +1,14 @@
+[
+  {
+    "Id": 1,
+    "MovieId": 1,
+    "MovieTitle": "Inception",
+    "Schedule": "14:00",
+    "Seats": [
+      "A3"
+    ],
+    "BuyerName": "Agile",
+    "TotalPrice": 50000,
+    "TransactionTime": "2025-06-02T05:55:27.2547417+07:00"
+  }
+]
