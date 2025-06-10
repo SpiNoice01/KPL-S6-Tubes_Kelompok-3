@@ -1,0 +1,6 @@
+2025-06-01 23:50:17 [ERROR] Application crashed
+System.IO.FileNotFoundException: Unable to find the specified file.
+   at System.IO.FileSystem.ReplaceFile(String sourceFullPath, String destFullPath, String destBackupFullPath, Boolean ignoreMetadataErrors)
+   at SecureCinemaBookingSystem.SecureDataRepository.WriteData(String filename, String content) in C:\STUFF\1-KULIAH\0.Semester_6\4. Konstruksi Perangkat Lunak\Praktikum\KPL-S6-Tubes_Kelompok-3\TiketFilm\TiketFilm\Program.cs:line 186
+   at SecureCinemaBookingSystem.Program.InitializeAdminAccount() in C:\STUFF\1-KULIAH\0.Semester_6\4. Konstruksi Perangkat Lunak\Praktikum\KPL-S6-Tubes_Kelompok-3\TiketFilm\TiketFilm\Program.cs:line 1125
+   at SecureCinemaBookingSystem.Program.Main() in C:\STUFF\1-KULIAH\0.Semester_6\4. Konstruksi Perangkat Lunak\Praktikum\KPL-S6-Tubes_Kelompok-3\TiketFilm\TiketFilm\Program.cs:line 1085
