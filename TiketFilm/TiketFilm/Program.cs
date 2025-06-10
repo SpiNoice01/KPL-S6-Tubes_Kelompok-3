@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+
+
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -70,6 +73,12 @@ namespace CinemaTicketBookingSystem
         }
     }
 
+    public class User
+    {
+        public string Username { get; set; }
+        public string Password { get; set; }
+    }
+
     // Interfaces
     public interface IMovieRepository
     {
@@ -86,6 +95,12 @@ namespace CinemaTicketBookingSystem
     {
         IReadOnlyList<BookingTransaction> GetAllTransactions();
         void AddTransaction(BookingTransaction transaction);
+    }
+
+    public interface IUserRepository
+    {
+        User GetUserByUsername(string username);
+        IReadOnlyList<User> GetAllUsers();
     }
 
     // Concrete Repositories
@@ -174,6 +189,31 @@ namespace CinemaTicketBookingSystem
             catch (Exception ex)
             {
                 throw new RepositoryException("Failed to save booking transactions", ex);
+            }
+        }
+    }
+
+    public class JsonUserRepository : IUserRepository
+    {
+        private const string UserFile = "users.json";
+
+        public User GetUserByUsername(string username)
+        {
+            return GetAllUsers().FirstOrDefault(u => u.Username == username);
+        }
+
+        public IReadOnlyList<User> GetAllUsers()
+        {
+            if (!File.Exists(UserFile))
+                return new List<User>().AsReadOnly();
+            try
+            {
+                var users = JsonConvert.DeserializeObject<List<User>>(File.ReadAllText(UserFile)) ?? new List<User>();
+                return users.AsReadOnly();
+            }
+            catch (Exception ex)
+            {
+                throw new RepositoryException("Failed to load users", ex);
             }
         }
     }
@@ -336,6 +376,22 @@ namespace CinemaTicketBookingSystem
             if (string.IsNullOrWhiteSpace(schedule)) throw new ArgumentException("Schedule cannot be empty", nameof(schedule));
             if (seats == null || !seats.Any()) throw new ArgumentException("At least one seat must be selected", nameof(seats));
             if (string.IsNullOrWhiteSpace(buyerName)) throw new ArgumentException("Buyer name cannot be empty", nameof(buyerName));
+        }
+    }
+
+    public class AuthService
+    {
+        private readonly IUserRepository _userRepository;
+        public AuthService(IUserRepository userRepository)
+        {
+            _userRepository = userRepository ?? throw new ArgumentNullException(nameof(userRepository));
+        }
+
+        public bool Login(string username, string password)
+        {
+            var user = _userRepository.GetUserByUsername(username);
+            if (user == null) return false;
+            return user.Password == password;
         }
     }
 
@@ -588,21 +644,45 @@ namespace CinemaTicketBookingSystem
         private readonly SeatService _seatService;
         private readonly IUserInterface _ui;
         private readonly BookingController _bookingController;
+        private readonly AuthService _authService;
+        private User _currentUser;
 
         public CinemaApp(MovieService movieService,
                         BookingService bookingService,
                         SeatService seatService,
-                        IUserInterface ui)
+                        IUserInterface ui,
+                        AuthService authService)
         {
             _movieService = movieService ?? throw new ArgumentNullException(nameof(movieService));
             _bookingService = bookingService ?? throw new ArgumentNullException(nameof(bookingService));
             _seatService = seatService ?? throw new ArgumentNullException(nameof(seatService));
             _ui = ui ?? throw new ArgumentNullException(nameof(ui));
             _bookingController = new BookingController(movieService, bookingService, seatService, ui);
+            _authService = authService ?? throw new ArgumentNullException(nameof(authService));
         }
 
         public void Run()
         {
+            // Login first
+            bool loggedIn = false;
+            do
+            {
+                _ui.ClearScreen();
+                _ui.DisplayMessage("=== LOGIN ===");
+                var username = _ui.GetUserInput("Username: ");
+                var password = _ui.GetUserInput("Password: ");
+                if (_authService.Login(username, password))
+                {
+                    loggedIn = true;
+                    _ui.DisplayMessage("Login successful!\n");
+                }
+                else
+                {
+                    _ui.DisplayMessage("Login failed. Try again.\n");
+                    _ui.WaitForUser();
+                }
+            } while (!loggedIn);
+
             while (true)
             {
                 _ui.ClearScreen();
@@ -685,13 +765,15 @@ namespace CinemaTicketBookingSystem
             var movieRepo = new JsonMovieRepository();
             var seatRepo = new JsonSeatRepository();
             var bookingRepo = new JsonBookingRepository();
+            var userRepo = new JsonUserRepository();
+            var authService = new AuthService(userRepo);
 
             var movieService = new MovieService(movieRepo);
             var seatService = new SeatService(seatRepo);
             var bookingService = new BookingService(bookingRepo, movieService, seatService);
 
             var ui = new ConsoleUserInterface();
-            var app = new CinemaApp(movieService, bookingService, seatService, ui);
+            var app = new CinemaApp(movieService, bookingService, seatService, ui, authService);
 
             // Run the application
             app.Run();
