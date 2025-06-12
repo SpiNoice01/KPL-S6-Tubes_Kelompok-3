@@ -1,5 +1,5 @@
 ﻿using BenchmarkDotNet.Attributes;
-using TiketFilmCore;
+using CinemaTicketBookingSystem;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -20,34 +20,39 @@ class BenchmarkRunnerMain
 [MemoryDiagnoser]
 public class BenchmarkTests
 {
-    private readonly List<TiketFilmCore.Movie> testMovies;
-    private readonly TiketFilmCore.Seat testSeats;
+    private readonly MovieService _movieService;
+    private readonly BookingService _bookingService;
+    private readonly SeatService _seatService;
+    private readonly Movie testMovie;
+    private readonly SeatReservation testSeats;
 
     public BenchmarkTests()
     {
-        // Persiapan data dummy
-        TiketFilmCore.Program.IsTesting = true;
+        // Initialize services
+        var movieRepo = new JsonMovieRepository();
+        var seatRepo = new JsonSeatRepository();
+        var bookingRepo = new JsonBookingRepository();
+        var userRepo = new JsonUserRepository();
 
-        testMovies = new()
-        {
-            new TiketFilmCore.Movie
-            {
-                Id = 1,
-                Title = "Film A",
-                Genre = "Action",
-                Duration = 120,
-                Schedule = new List<string> { "10:00", "13:00" }
-            }
-        };
+        _movieService = new MovieService(movieRepo);
+        _seatService = new SeatService(seatRepo);
+        _bookingService = new BookingService(bookingRepo, _movieService, _seatService);
 
-        testSeats = new();
-        testSeats.MovieScheduleSeats[1] = new Dictionary<string, List<string>>
-        {
-            ["10:00"] = new List<string>()
-        };
+        // Create test movie
+        testMovie = new Movie(
+            id: 1,
+            title: "Film A",
+            genre: "Action",
+            durationMinutes: 120,
+            schedules: new List<string> { "10:00", "13:00" }
+        );
 
-        // Simpan dummy data
-        File.WriteAllText("movies.json", JsonConvert.SerializeObject(testMovies, Formatting.Indented));
+        // Create test seats
+        testSeats = new SeatReservation();
+        testSeats.ReserveSeats(1, "10:00", new List<string>());
+
+        // Save test data
+        File.WriteAllText("movies.json", JsonConvert.SerializeObject(new List<Movie> { testMovie }, Formatting.Indented));
         File.WriteAllText("seats.json", JsonConvert.SerializeObject(testSeats, Formatting.Indented));
         File.WriteAllText("transactions.json", "[]");
     }
@@ -55,57 +60,36 @@ public class BenchmarkTests
     [Benchmark]
     public void BenchmarkGetMovies()
     {
-        _ = TiketFilmCore.Program.GetMovies();
+        _ = _movieService.GetAvailableMovies();
     }
 
     [Benchmark]
     public void BenchmarkOrderTicket()
     {
-        // Simulasi pemesanan satu kursi
-        var transaction = new TiketFilmCore.Transaction
-        {
-            MovieId = 1,
-            MovieTitle = "Film A",
-            Schedule = "10:00",
-            Seats = new List<string> { "A1" },
-            Buyer = "BenchmarkUser",
-            Price = 50000,
-            Timestamp = DateTime.Now
-        };
-
-        // Tambah kursi secara langsung
-        var seats = TiketFilmCore.Program.GetSeatData();
-        if (!seats.MovieScheduleSeats.ContainsKey(1))
-            seats.MovieScheduleSeats[1] = new Dictionary<string, List<string>>();
-        if (!seats.MovieScheduleSeats[1].ContainsKey("10:00"))
-            seats.MovieScheduleSeats[1]["10:00"] = new List<string>();
-        seats.MovieScheduleSeats[1]["10:00"].Add("A1");
-
-        File.WriteAllText("seats.json", JsonConvert.SerializeObject(seats, Formatting.Indented));
-        TiketFilmCore.Program.SaveTransaction(transaction);
+        // Create a booking transaction
+        var transaction = _bookingService.CreateBooking(
+            movieId: 1,
+            schedule: "10:00",
+            seats: new List<string> { "A1" },
+            buyerName: "BenchmarkUser"
+        );
     }
 
     [Benchmark]
     public void BenchmarkShowTransactionHistory()
     {
-        // Tulis dummy transaksi jika kosong
+        // Create a test transaction if none exists
         if (!File.Exists("transactions.json") || File.ReadAllText("transactions.json").Length < 5)
         {
-            var tx = new TiketFilmCore.Transaction
-            {
-                Id = 1,
-                MovieId = 1,
-                MovieTitle = "Film A",
-                Schedule = "10:00",
-                Seats = new List<string> { "A1" },
-                Buyer = "Test",
-                Price = 50000,
-                Timestamp = DateTime.Now
-            };
-            TiketFilmCore.Program.SaveTransaction(tx);
+            _bookingService.CreateBooking(
+                movieId: 1,
+                schedule: "10:00",
+                seats: new List<string> { "A1" },
+                buyerName: "Test"
+            );
         }
 
-        // Jalankan show history
-        TiketFilmCore.Program.ShowTransactionHistory();
+        // Get transaction history
+        _ = _bookingService.GetTransactionHistory();
     }
 }

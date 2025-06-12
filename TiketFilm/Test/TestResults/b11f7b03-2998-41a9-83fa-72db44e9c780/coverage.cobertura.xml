@@ -1,0 +1,1938 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<coverage line-rate="0" branch-rate="0" version="1.9" timestamp="1749735426" lines-covered="0" lines-valid="463" branches-covered="0" branches-valid="174">
+  <sources>
+    <source>C:\</source>
+  </sources>
+  <packages>
+    <package name="TiketFilm" line-rate="0" branch-rate="0" complexity="206">
+      <classes>
+        <class name="CinemaTicketBookingSystem.Movie" filename="STUFF\1-KULIAH\0.Semester_6\4. Konstruksi Perangkat Lunak\Praktikum\KPL-S6-Tubes_Kelompok-3\TiketFilm\TiketFilm\Program.cs" line-rate="0" branch-rate="0" complexity="15">
+          <methods>
+            <method name="get_Id" signature="()" line-rate="0" branch-rate="1" complexity="1">
+              <lines>
+                <line number="15" hits="0" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Title" signature="()" line-rate="0" branch-rate="1" complexity="1">
+              <lines>
+                <line number="16" hits="0" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Genre" signature="()" line-rate="0" branch-rate="1" complexity="1">
+              <lines>
+                <line number="17" hits="0" branch="False" />
+              </lines>
+            </method>
+            <method name="get_DurationMinutes" signature="()" line-rate="0" branch-rate="1" complexity="1">
+              <lines>
+                <line number="18" hits="0" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Schedules" signature="()" line-rate="0" branch-rate="1" complexity="1">
+              <lines>
+                <line number="19" hits="0" branch="False" />
+              </lines>
+            </method>
+            <method name=".ctor" signature="(System.Int32,System.String,System.String,System.Int32,System.Collections.Generic.List`1&lt;System.String&gt;)" line-rate="0" branch-rate="0" complexity="10">
+              <lines>
+                <line number="21" hits="0" branch="False" />
+                <line number="22" hits="0" branch="False" />
+                <line number="23" hits="0" branch="False" />
+                <line number="24" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="18" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="25" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="40" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="26" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="63" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="27" hits="0" branch="True" condition-coverage="0% (0/4)">
+                  <conditions>
+                    <condition number="86" type="jump" coverage="0%" />
+                    <condition number="99" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="28" hits="0" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="15" hits="0" branch="False" />
+            <line number="16" hits="0" branch="False" />
+            <line number="17" hits="0" branch="False" />
+            <line number="18" hits="0" branch="False" />
+            <line number="19" hits="0" branch="False" />
+            <line number="21" hits="0" branch="False" />
+            <line number="22" hits="0" branch="False" />
+            <line number="23" hits="0" branch="False" />
+            <line number="24" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="18" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="25" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="40" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="26" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="63" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="27" hits="0" branch="True" condition-coverage="0% (0/4)">
+              <conditions>
+                <condition number="86" type="jump" coverage="0%" />
+                <condition number="99" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="28" hits="0" branch="False" />
+          </lines>
+        </class>
+        <class name="CinemaTicketBookingSystem.SeatReservation" filename="STUFF\1-KULIAH\0.Semester_6\4. Konstruksi Perangkat Lunak\Praktikum\KPL-S6-Tubes_Kelompok-3\TiketFilm\TiketFilm\Program.cs" line-rate="0" branch-rate="0" complexity="5">
+          <methods>
+            <method name="get_MovieScheduleSeats" signature="()" line-rate="0" branch-rate="1" complexity="1">
+              <lines>
+                <line number="33" hits="0" branch="False" />
+              </lines>
+            </method>
+            <method name="ReserveSeats" signature="(System.Int32,System.String,System.Collections.Generic.List`1&lt;System.String&gt;)" line-rate="0" branch-rate="0" complexity="4">
+              <lines>
+                <line number="36" hits="0" branch="False" />
+                <line number="37" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="18" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="38" hits="0" branch="False" />
+                <line number="39" hits="0" branch="False" />
+                <line number="40" hits="0" branch="False" />
+                <line number="42" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="63" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="43" hits="0" branch="False" />
+                <line number="44" hits="0" branch="False" />
+                <line number="45" hits="0" branch="False" />
+                <line number="47" hits="0" branch="False" />
+                <line number="48" hits="0" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="33" hits="0" branch="False" />
+            <line number="36" hits="0" branch="False" />
+            <line number="37" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="18" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="38" hits="0" branch="False" />
+            <line number="39" hits="0" branch="False" />
+            <line number="40" hits="0" branch="False" />
+            <line number="42" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="63" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="43" hits="0" branch="False" />
+            <line number="44" hits="0" branch="False" />
+            <line number="45" hits="0" branch="False" />
+            <line number="47" hits="0" branch="False" />
+            <line number="48" hits="0" branch="False" />
+          </lines>
+        </class>
+        <class name="CinemaTicketBookingSystem.BookingTransaction" filename="STUFF\1-KULIAH\0.Semester_6\4. Konstruksi Perangkat Lunak\Praktikum\KPL-S6-Tubes_Kelompok-3\TiketFilm\TiketFilm\Program.cs" line-rate="0" branch-rate="0" complexity="20">
+          <methods>
+            <method name="get_Id" signature="()" line-rate="0" branch-rate="1" complexity="1">
+              <lines>
+                <line number="53" hits="0" branch="False" />
+              </lines>
+            </method>
+            <method name="get_MovieId" signature="()" line-rate="0" branch-rate="1" complexity="1">
+              <lines>
+                <line number="54" hits="0" branch="False" />
+              </lines>
+            </method>
+            <method name="get_MovieTitle" signature="()" line-rate="0" branch-rate="1" complexity="1">
+              <lines>
+                <line number="55" hits="0" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Schedule" signature="()" line-rate="0" branch-rate="1" complexity="1">
+              <lines>
+                <line number="56" hits="0" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Seats" signature="()" line-rate="0" branch-rate="1" complexity="1">
+              <lines>
+                <line number="57" hits="0" branch="False" />
+              </lines>
+            </method>
+            <method name="get_BuyerName" signature="()" line-rate="0" branch-rate="1" complexity="1">
+              <lines>
+                <line number="58" hits="0" branch="False" />
+              </lines>
+            </method>
+            <method name="get_TotalPrice" signature="()" line-rate="0" branch-rate="1" complexity="1">
+              <lines>
+                <line number="59" hits="0" branch="False" />
+              </lines>
+            </method>
+            <method name="get_TransactionTime" signature="()" line-rate="0" branch-rate="1" complexity="1">
+              <lines>
+                <line number="60" hits="0" branch="False" />
+              </lines>
+            </method>
+            <method name=".ctor" signature="(System.Int32,System.Int32,System.String,System.String,System.Collections.Generic.List`1&lt;System.String&gt;,System.String,System.Int32,System.DateTime)" line-rate="0" branch-rate="0" complexity="12">
+              <lines>
+                <line number="62" hits="0" branch="False" />
+                <line number="63" hits="0" branch="False" />
+                <line number="64" hits="0" branch="False" />
+                <line number="65" hits="0" branch="False" />
+                <line number="66" hits="0" branch="False" />
+                <line number="67" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="25" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="68" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="48" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="69" hits="0" branch="True" condition-coverage="0% (0/4)">
+                  <conditions>
+                    <condition number="70" type="jump" coverage="0%" />
+                    <condition number="83" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="70" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="106" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="71" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="129" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="72" hits="0" branch="False" />
+                <line number="73" hits="0" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="53" hits="0" branch="False" />
+            <line number="54" hits="0" branch="False" />
+            <line number="55" hits="0" branch="False" />
+            <line number="56" hits="0" branch="False" />
+            <line number="57" hits="0" branch="False" />
+            <line number="58" hits="0" branch="False" />
+            <line number="59" hits="0" branch="False" />
+            <line number="60" hits="0" branch="False" />
+            <line number="62" hits="0" branch="False" />
+            <line number="63" hits="0" branch="False" />
+            <line number="64" hits="0" branch="False" />
+            <line number="65" hits="0" branch="False" />
+            <line number="66" hits="0" branch="False" />
+            <line number="67" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="25" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="68" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="48" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="69" hits="0" branch="True" condition-coverage="0% (0/4)">
+              <conditions>
+                <condition number="70" type="jump" coverage="0%" />
+                <condition number="83" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="70" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="106" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="71" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="129" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="72" hits="0" branch="False" />
+            <line number="73" hits="0" branch="False" />
+          </lines>
+        </class>
+        <class name="CinemaTicketBookingSystem.User" filename="STUFF\1-KULIAH\0.Semester_6\4. Konstruksi Perangkat Lunak\Praktikum\KPL-S6-Tubes_Kelompok-3\TiketFilm\TiketFilm\Program.cs" line-rate="0" branch-rate="1" complexity="2">
+          <methods>
+            <method name="get_Username" signature="()" line-rate="0" branch-rate="1" complexity="1">
+              <lines>
+                <line number="78" hits="0" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Password" signature="()" line-rate="0" branch-rate="1" complexity="1">
+              <lines>
+                <line number="79" hits="0" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="78" hits="0" branch="False" />
+            <line number="79" hits="0" branch="False" />
+          </lines>
+        </class>
+        <class name="CinemaTicketBookingSystem.JsonMovieRepository" filename="STUFF\1-KULIAH\0.Semester_6\4. Konstruksi Perangkat Lunak\Praktikum\KPL-S6-Tubes_Kelompok-3\TiketFilm\TiketFilm\Program.cs" line-rate="0" branch-rate="0" complexity="4">
+          <methods>
+            <method name="GetAllMovies" signature="()" line-rate="0" branch-rate="0" complexity="4">
+              <lines>
+                <line number="112" hits="0" branch="False" />
+                <line number="113" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="16" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="114" hits="0" branch="False" />
+                <line number="117" hits="0" branch="False" />
+                <line number="118" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="49" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="119" hits="0" branch="False" />
+                <line number="121" hits="0" branch="False" />
+                <line number="122" hits="0" branch="False" />
+                <line number="123" hits="0" branch="False" />
+                <line number="125" hits="0" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="112" hits="0" branch="False" />
+            <line number="113" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="16" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="114" hits="0" branch="False" />
+            <line number="117" hits="0" branch="False" />
+            <line number="118" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="49" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="119" hits="0" branch="False" />
+            <line number="121" hits="0" branch="False" />
+            <line number="122" hits="0" branch="False" />
+            <line number="123" hits="0" branch="False" />
+            <line number="125" hits="0" branch="False" />
+          </lines>
+        </class>
+        <class name="CinemaTicketBookingSystem.JsonSeatRepository" filename="STUFF\1-KULIAH\0.Semester_6\4. Konstruksi Perangkat Lunak\Praktikum\KPL-S6-Tubes_Kelompok-3\TiketFilm\TiketFilm\Program.cs" line-rate="0" branch-rate="0" complexity="5">
+          <methods>
+            <method name="GetSeatReservations" signature="()" line-rate="0" branch-rate="0" complexity="4">
+              <lines>
+                <line number="133" hits="0" branch="False" />
+                <line number="134" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="16" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="135" hits="0" branch="False" />
+                <line number="138" hits="0" branch="False" />
+                <line number="139" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="44" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="141" hits="0" branch="False" />
+                <line number="142" hits="0" branch="False" />
+                <line number="143" hits="0" branch="False" />
+                <line number="145" hits="0" branch="False" />
+              </lines>
+            </method>
+            <method name="SaveSeatReservations" signature="(CinemaTicketBookingSystem.SeatReservation)" line-rate="0" branch-rate="1" complexity="1">
+              <lines>
+                <line number="148" hits="0" branch="False" />
+                <line number="150" hits="0" branch="False" />
+                <line number="151" hits="0" branch="False" />
+                <line number="152" hits="0" branch="False" />
+                <line number="153" hits="0" branch="False" />
+                <line number="154" hits="0" branch="False" />
+                <line number="155" hits="0" branch="False" />
+                <line number="157" hits="0" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="133" hits="0" branch="False" />
+            <line number="134" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="16" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="135" hits="0" branch="False" />
+            <line number="138" hits="0" branch="False" />
+            <line number="139" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="44" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="141" hits="0" branch="False" />
+            <line number="142" hits="0" branch="False" />
+            <line number="143" hits="0" branch="False" />
+            <line number="145" hits="0" branch="False" />
+            <line number="148" hits="0" branch="False" />
+            <line number="150" hits="0" branch="False" />
+            <line number="151" hits="0" branch="False" />
+            <line number="152" hits="0" branch="False" />
+            <line number="153" hits="0" branch="False" />
+            <line number="154" hits="0" branch="False" />
+            <line number="155" hits="0" branch="False" />
+            <line number="157" hits="0" branch="False" />
+          </lines>
+        </class>
+        <class name="CinemaTicketBookingSystem.JsonBookingRepository" filename="STUFF\1-KULIAH\0.Semester_6\4. Konstruksi Perangkat Lunak\Praktikum\KPL-S6-Tubes_Kelompok-3\TiketFilm\TiketFilm\Program.cs" line-rate="0" branch-rate="0" complexity="7">
+          <methods>
+            <method name="GetAllTransactions" signature="()" line-rate="0" branch-rate="0" complexity="6">
+              <lines>
+                <line number="165" hits="0" branch="False" />
+                <line number="166" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="16" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="167" hits="0" branch="False" />
+                <line number="170" hits="0" branch="False" />
+                <line number="171" hits="0" branch="True" condition-coverage="0% (0/4)">
+                  <conditions>
+                    <condition number="49" type="jump" coverage="0%" />
+                    <condition number="61" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="172" hits="0" branch="False" />
+                <line number="174" hits="0" branch="False" />
+                <line number="175" hits="0" branch="False" />
+                <line number="176" hits="0" branch="False" />
+                <line number="178" hits="0" branch="False" />
+              </lines>
+            </method>
+            <method name="AddTransaction" signature="(CinemaTicketBookingSystem.BookingTransaction)" line-rate="0" branch-rate="1" complexity="1">
+              <lines>
+                <line number="181" hits="0" branch="False" />
+                <line number="182" hits="0" branch="False" />
+                <line number="183" hits="0" branch="False" />
+                <line number="186" hits="0" branch="False" />
+                <line number="187" hits="0" branch="False" />
+                <line number="188" hits="0" branch="False" />
+                <line number="189" hits="0" branch="False" />
+                <line number="190" hits="0" branch="False" />
+                <line number="191" hits="0" branch="False" />
+                <line number="193" hits="0" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="165" hits="0" branch="False" />
+            <line number="166" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="16" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="167" hits="0" branch="False" />
+            <line number="170" hits="0" branch="False" />
+            <line number="171" hits="0" branch="True" condition-coverage="0% (0/4)">
+              <conditions>
+                <condition number="49" type="jump" coverage="0%" />
+                <condition number="61" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="172" hits="0" branch="False" />
+            <line number="174" hits="0" branch="False" />
+            <line number="175" hits="0" branch="False" />
+            <line number="176" hits="0" branch="False" />
+            <line number="178" hits="0" branch="False" />
+            <line number="181" hits="0" branch="False" />
+            <line number="182" hits="0" branch="False" />
+            <line number="183" hits="0" branch="False" />
+            <line number="186" hits="0" branch="False" />
+            <line number="187" hits="0" branch="False" />
+            <line number="188" hits="0" branch="False" />
+            <line number="189" hits="0" branch="False" />
+            <line number="190" hits="0" branch="False" />
+            <line number="191" hits="0" branch="False" />
+            <line number="193" hits="0" branch="False" />
+          </lines>
+        </class>
+        <class name="CinemaTicketBookingSystem.JsonUserRepository" filename="STUFF\1-KULIAH\0.Semester_6\4. Konstruksi Perangkat Lunak\Praktikum\KPL-S6-Tubes_Kelompok-3\TiketFilm\TiketFilm\Program.cs" line-rate="0" branch-rate="0" complexity="5">
+          <methods>
+            <method name="GetUserByUsername" signature="(System.String)" line-rate="0" branch-rate="1" complexity="1">
+              <lines>
+                <line number="201" hits="0" branch="False" />
+                <line number="202" hits="0" branch="False" />
+                <line number="203" hits="0" branch="False" />
+              </lines>
+            </method>
+            <method name="GetAllUsers" signature="()" line-rate="0" branch-rate="0" complexity="4">
+              <lines>
+                <line number="206" hits="0" branch="False" />
+                <line number="207" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="16" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="208" hits="0" branch="False" />
+                <line number="210" hits="0" branch="False" />
+                <line number="211" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="49" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="212" hits="0" branch="False" />
+                <line number="214" hits="0" branch="False" />
+                <line number="215" hits="0" branch="False" />
+                <line number="216" hits="0" branch="False" />
+                <line number="218" hits="0" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="201" hits="0" branch="False" />
+            <line number="202" hits="0" branch="False" />
+            <line number="203" hits="0" branch="False" />
+            <line number="206" hits="0" branch="False" />
+            <line number="207" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="16" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="208" hits="0" branch="False" />
+            <line number="210" hits="0" branch="False" />
+            <line number="211" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="49" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="212" hits="0" branch="False" />
+            <line number="214" hits="0" branch="False" />
+            <line number="215" hits="0" branch="False" />
+            <line number="216" hits="0" branch="False" />
+            <line number="218" hits="0" branch="False" />
+          </lines>
+        </class>
+        <class name="CinemaTicketBookingSystem.RepositoryException" filename="STUFF\1-KULIAH\0.Semester_6\4. Konstruksi Perangkat Lunak\Praktikum\KPL-S6-Tubes_Kelompok-3\TiketFilm\TiketFilm\Program.cs" line-rate="0" branch-rate="1" complexity="1">
+          <methods>
+            <method name=".ctor" signature="(System.String,System.Exception)" line-rate="0" branch-rate="1" complexity="1">
+              <lines>
+                <line number="225" hits="0" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="225" hits="0" branch="False" />
+          </lines>
+        </class>
+        <class name="CinemaTicketBookingSystem.BookingException" filename="STUFF\1-KULIAH\0.Semester_6\4. Konstruksi Perangkat Lunak\Praktikum\KPL-S6-Tubes_Kelompok-3\TiketFilm\TiketFilm\Program.cs" line-rate="0" branch-rate="1" complexity="1">
+          <methods>
+            <method name=".ctor" signature="(System.String)" line-rate="0" branch-rate="1" complexity="1">
+              <lines>
+                <line number="230" hits="0" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="230" hits="0" branch="False" />
+          </lines>
+        </class>
+        <class name="CinemaTicketBookingSystem.MovieService" filename="STUFF\1-KULIAH\0.Semester_6\4. Konstruksi Perangkat Lunak\Praktikum\KPL-S6-Tubes_Kelompok-3\TiketFilm\TiketFilm\Program.cs" line-rate="0" branch-rate="0" complexity="4">
+          <methods>
+            <method name="GetAvailableMovies" signature="()" line-rate="0" branch-rate="1" complexity="1">
+              <lines>
+                <line number="244" hits="0" branch="False" />
+                <line number="245" hits="0" branch="False" />
+                <line number="246" hits="0" branch="False" />
+              </lines>
+            </method>
+            <method name="GetMovieById" signature="(System.Int32)" line-rate="0" branch-rate="1" complexity="1">
+              <lines>
+                <line number="249" hits="0" branch="False" />
+                <line number="250" hits="0" branch="False" />
+                <line number="251" hits="0" branch="False" />
+                <line number="252" hits="0" branch="False" />
+              </lines>
+            </method>
+            <method name=".ctor" signature="(CinemaTicketBookingSystem.IMovieRepository)" line-rate="0" branch-rate="0" complexity="2">
+              <lines>
+                <line number="238" hits="0" branch="False" />
+                <line number="239" hits="0" branch="False" />
+                <line number="240" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="11" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="241" hits="0" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="244" hits="0" branch="False" />
+            <line number="245" hits="0" branch="False" />
+            <line number="246" hits="0" branch="False" />
+            <line number="249" hits="0" branch="False" />
+            <line number="250" hits="0" branch="False" />
+            <line number="251" hits="0" branch="False" />
+            <line number="252" hits="0" branch="False" />
+            <line number="238" hits="0" branch="False" />
+            <line number="239" hits="0" branch="False" />
+            <line number="240" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="11" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="241" hits="0" branch="False" />
+          </lines>
+        </class>
+        <class name="CinemaTicketBookingSystem.SeatService" filename="STUFF\1-KULIAH\0.Semester_6\4. Konstruksi Perangkat Lunak\Praktikum\KPL-S6-Tubes_Kelompok-3\TiketFilm\TiketFilm\Program.cs" line-rate="0" branch-rate="0" complexity="16">
+          <methods>
+            <method name="GetAvailableSeats" signature="(System.Int32,System.String)" line-rate="0" branch-rate="0" complexity="2">
+              <lines>
+                <line number="267" hits="0" branch="False" />
+                <line number="268" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="9" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="269" hits="0" branch="False" />
+                <line number="271" hits="0" branch="False" />
+                <line number="272" hits="0" branch="False" />
+                <line number="274" hits="0" branch="False" />
+                <line number="275" hits="0" branch="False" />
+              </lines>
+            </method>
+            <method name="ReserveSeats" signature="(System.Int32,System.String,System.Collections.Generic.List`1&lt;System.String&gt;)" line-rate="0" branch-rate="0" complexity="4">
+              <lines>
+                <line number="278" hits="0" branch="False" />
+                <line number="279" hits="0" branch="True" condition-coverage="0% (0/4)">
+                  <conditions>
+                    <condition number="2" type="jump" coverage="0%" />
+                    <condition number="18" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="280" hits="0" branch="False" />
+                <line number="282" hits="0" branch="False" />
+                <line number="283" hits="0" branch="False" />
+                <line number="284" hits="0" branch="False" />
+                <line number="285" hits="0" branch="False" />
+              </lines>
+            </method>
+            <method name="GetReservedSeats" signature="(System.Int32,System.String)" line-rate="0" branch-rate="0" complexity="4">
+              <lines>
+                <line number="288" hits="0" branch="False" />
+                <line number="289" hits="0" branch="False" />
+                <line number="291" hits="0" branch="True" condition-coverage="0% (0/4)">
+                  <conditions>
+                    <condition number="27" type="jump" coverage="0%" />
+                    <condition number="43" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="292" hits="0" branch="False" />
+                <line number="293" hits="0" branch="False" />
+                <line number="294" hits="0" branch="False" />
+                <line number="297" hits="0" branch="False" />
+                <line number="298" hits="0" branch="False" />
+              </lines>
+            </method>
+            <method name="GenerateAllSeats" signature="()" line-rate="0" branch-rate="0" complexity="4">
+              <lines>
+                <line number="301" hits="0" branch="False" />
+                <line number="302" hits="0" branch="False" />
+                <line number="303" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="92" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="304" hits="0" branch="False" />
+                <line number="305" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="75" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="306" hits="0" branch="False" />
+                <line number="307" hits="0" branch="False" />
+                <line number="308" hits="0" branch="False" />
+                <line number="309" hits="0" branch="False" />
+                <line number="310" hits="0" branch="False" />
+                <line number="311" hits="0" branch="False" />
+              </lines>
+            </method>
+            <method name=".ctor" signature="(CinemaTicketBookingSystem.ISeatRepository)" line-rate="0" branch-rate="0" complexity="2">
+              <lines>
+                <line number="261" hits="0" branch="False" />
+                <line number="262" hits="0" branch="False" />
+                <line number="263" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="11" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="264" hits="0" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="267" hits="0" branch="False" />
+            <line number="268" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="9" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="269" hits="0" branch="False" />
+            <line number="271" hits="0" branch="False" />
+            <line number="272" hits="0" branch="False" />
+            <line number="274" hits="0" branch="False" />
+            <line number="275" hits="0" branch="False" />
+            <line number="278" hits="0" branch="False" />
+            <line number="279" hits="0" branch="True" condition-coverage="0% (0/4)">
+              <conditions>
+                <condition number="2" type="jump" coverage="0%" />
+                <condition number="18" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="280" hits="0" branch="False" />
+            <line number="282" hits="0" branch="False" />
+            <line number="283" hits="0" branch="False" />
+            <line number="284" hits="0" branch="False" />
+            <line number="285" hits="0" branch="False" />
+            <line number="288" hits="0" branch="False" />
+            <line number="289" hits="0" branch="False" />
+            <line number="291" hits="0" branch="True" condition-coverage="0% (0/4)">
+              <conditions>
+                <condition number="27" type="jump" coverage="0%" />
+                <condition number="43" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="292" hits="0" branch="False" />
+            <line number="293" hits="0" branch="False" />
+            <line number="294" hits="0" branch="False" />
+            <line number="297" hits="0" branch="False" />
+            <line number="298" hits="0" branch="False" />
+            <line number="301" hits="0" branch="False" />
+            <line number="302" hits="0" branch="False" />
+            <line number="303" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="92" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="304" hits="0" branch="False" />
+            <line number="305" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="75" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="306" hits="0" branch="False" />
+            <line number="307" hits="0" branch="False" />
+            <line number="308" hits="0" branch="False" />
+            <line number="309" hits="0" branch="False" />
+            <line number="310" hits="0" branch="False" />
+            <line number="311" hits="0" branch="False" />
+            <line number="261" hits="0" branch="False" />
+            <line number="262" hits="0" branch="False" />
+            <line number="263" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="11" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="264" hits="0" branch="False" />
+          </lines>
+        </class>
+        <class name="CinemaTicketBookingSystem.BookingService" filename="STUFF\1-KULIAH\0.Semester_6\4. Konstruksi Perangkat Lunak\Praktikum\KPL-S6-Tubes_Kelompok-3\TiketFilm\TiketFilm\Program.cs" line-rate="0" branch-rate="0" complexity="24">
+          <methods>
+            <method name="CreateBooking" signature="(System.Int32,System.String,System.Collections.Generic.List`1&lt;System.String&gt;,System.String)" line-rate="0" branch-rate="0" complexity="6">
+              <lines>
+                <line number="329" hits="0" branch="False" />
+                <line number="330" hits="0" branch="False" />
+                <line number="332" hits="0" branch="False" />
+                <line number="333" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="34" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="334" hits="0" branch="False" />
+                <line number="336" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="66" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="337" hits="0" branch="False" />
+                <line number="339" hits="0" branch="False" />
+                <line number="340" hits="0" branch="False" />
+                <line number="342" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="116" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="343" hits="0" branch="False" />
+                <line number="345" hits="0" branch="False" />
+                <line number="346" hits="0" branch="False" />
+                <line number="347" hits="0" branch="False" />
+                <line number="348" hits="0" branch="False" />
+                <line number="349" hits="0" branch="False" />
+                <line number="350" hits="0" branch="False" />
+                <line number="351" hits="0" branch="False" />
+                <line number="352" hits="0" branch="False" />
+                <line number="353" hits="0" branch="False" />
+                <line number="354" hits="0" branch="False" />
+                <line number="355" hits="0" branch="False" />
+                <line number="357" hits="0" branch="False" />
+                <line number="358" hits="0" branch="False" />
+                <line number="360" hits="0" branch="False" />
+                <line number="361" hits="0" branch="False" />
+              </lines>
+            </method>
+            <method name="GetTransactionHistory" signature="()" line-rate="0" branch-rate="1" complexity="1">
+              <lines>
+                <line number="364" hits="0" branch="False" />
+                <line number="365" hits="0" branch="False" />
+                <line number="366" hits="0" branch="False" />
+              </lines>
+            </method>
+            <method name="CalculateTotalPrice" signature="(System.Int32)" line-rate="0" branch-rate="1" complexity="1">
+              <lines>
+                <line number="369" hits="0" branch="False" />
+                <line number="370" hits="0" branch="False" />
+                <line number="371" hits="0" branch="False" />
+              </lines>
+            </method>
+            <method name="ValidateBookingParameters" signature="(System.Int32,System.String,System.Collections.Generic.List`1&lt;System.String&gt;,System.String)" line-rate="0" branch-rate="0" complexity="10">
+              <lines>
+                <line number="374" hits="0" branch="False" />
+                <line number="375" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="10" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="376" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="36" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="377" hits="0" branch="True" condition-coverage="0% (0/4)">
+                  <conditions>
+                    <condition number="55" type="jump" coverage="0%" />
+                    <condition number="71" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="378" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="98" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="379" hits="0" branch="False" />
+              </lines>
+            </method>
+            <method name=".ctor" signature="(CinemaTicketBookingSystem.IBookingRepository,CinemaTicketBookingSystem.MovieService,CinemaTicketBookingSystem.SeatService)" line-rate="0" branch-rate="0" complexity="6">
+              <lines>
+                <line number="321" hits="0" branch="False" />
+                <line number="322" hits="0" branch="False" />
+                <line number="323" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="11" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="324" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="33" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="325" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="55" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="326" hits="0" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="329" hits="0" branch="False" />
+            <line number="330" hits="0" branch="False" />
+            <line number="332" hits="0" branch="False" />
+            <line number="333" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="34" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="334" hits="0" branch="False" />
+            <line number="336" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="66" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="337" hits="0" branch="False" />
+            <line number="339" hits="0" branch="False" />
+            <line number="340" hits="0" branch="False" />
+            <line number="342" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="116" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="343" hits="0" branch="False" />
+            <line number="345" hits="0" branch="False" />
+            <line number="346" hits="0" branch="False" />
+            <line number="347" hits="0" branch="False" />
+            <line number="348" hits="0" branch="False" />
+            <line number="349" hits="0" branch="False" />
+            <line number="350" hits="0" branch="False" />
+            <line number="351" hits="0" branch="False" />
+            <line number="352" hits="0" branch="False" />
+            <line number="353" hits="0" branch="False" />
+            <line number="354" hits="0" branch="False" />
+            <line number="355" hits="0" branch="False" />
+            <line number="357" hits="0" branch="False" />
+            <line number="358" hits="0" branch="False" />
+            <line number="360" hits="0" branch="False" />
+            <line number="361" hits="0" branch="False" />
+            <line number="364" hits="0" branch="False" />
+            <line number="365" hits="0" branch="False" />
+            <line number="366" hits="0" branch="False" />
+            <line number="369" hits="0" branch="False" />
+            <line number="370" hits="0" branch="False" />
+            <line number="371" hits="0" branch="False" />
+            <line number="374" hits="0" branch="False" />
+            <line number="375" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="10" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="376" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="36" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="377" hits="0" branch="True" condition-coverage="0% (0/4)">
+              <conditions>
+                <condition number="55" type="jump" coverage="0%" />
+                <condition number="71" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="378" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="98" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="379" hits="0" branch="False" />
+            <line number="321" hits="0" branch="False" />
+            <line number="322" hits="0" branch="False" />
+            <line number="323" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="11" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="324" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="33" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="325" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="55" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="326" hits="0" branch="False" />
+          </lines>
+        </class>
+        <class name="CinemaTicketBookingSystem.AuthService" filename="STUFF\1-KULIAH\0.Semester_6\4. Konstruksi Perangkat Lunak\Praktikum\KPL-S6-Tubes_Kelompok-3\TiketFilm\TiketFilm\Program.cs" line-rate="0" branch-rate="0" complexity="4">
+          <methods>
+            <method name="Login" signature="(System.String,System.String)" line-rate="0" branch-rate="0" complexity="2">
+              <lines>
+                <line number="391" hits="0" branch="False" />
+                <line number="392" hits="0" branch="False" />
+                <line number="393" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="20" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="394" hits="0" branch="False" />
+                <line number="395" hits="0" branch="False" />
+              </lines>
+            </method>
+            <method name=".ctor" signature="(CinemaTicketBookingSystem.IUserRepository)" line-rate="0" branch-rate="0" complexity="2">
+              <lines>
+                <line number="385" hits="0" branch="False" />
+                <line number="386" hits="0" branch="False" />
+                <line number="387" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="11" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="388" hits="0" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="391" hits="0" branch="False" />
+            <line number="392" hits="0" branch="False" />
+            <line number="393" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="20" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="394" hits="0" branch="False" />
+            <line number="395" hits="0" branch="False" />
+            <line number="385" hits="0" branch="False" />
+            <line number="386" hits="0" branch="False" />
+            <line number="387" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="11" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="388" hits="0" branch="False" />
+          </lines>
+        </class>
+        <class name="CinemaTicketBookingSystem.ConsoleUserInterface" filename="STUFF\1-KULIAH\0.Semester_6\4. Konstruksi Perangkat Lunak\Praktikum\KPL-S6-Tubes_Kelompok-3\TiketFilm\TiketFilm\Program.cs" line-rate="0" branch-rate="0" complexity="22">
+          <methods>
+            <method name="DisplayMessage" signature="(System.String)" line-rate="0" branch-rate="1" complexity="1">
+              <lines>
+                <line number="416" hits="0" branch="False" />
+                <line number="417" hits="0" branch="False" />
+                <line number="418" hits="0" branch="False" />
+              </lines>
+            </method>
+            <method name="DisplayMovies" signature="(System.Collections.Generic.IEnumerable`1&lt;CinemaTicketBookingSystem.Movie&gt;)" line-rate="0" branch-rate="0" complexity="2">
+              <lines>
+                <line number="421" hits="0" branch="False" />
+                <line number="422" hits="0" branch="False" />
+                <line number="423" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="215" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="424" hits="0" branch="False" />
+                <line number="425" hits="0" branch="False" />
+                <line number="426" hits="0" branch="False" />
+                <line number="427" hits="0" branch="False" />
+                <line number="428" hits="0" branch="False" />
+              </lines>
+            </method>
+            <method name="DisplaySchedules" signature="(System.Collections.Generic.IEnumerable`1&lt;System.String&gt;)" line-rate="0" branch-rate="0" complexity="2">
+              <lines>
+                <line number="431" hits="0" branch="False" />
+                <line number="432" hits="0" branch="False" />
+                <line number="433" hits="0" branch="False" />
+                <line number="434" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="108" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="435" hits="0" branch="False" />
+                <line number="436" hits="0" branch="False" />
+                <line number="437" hits="0" branch="False" />
+                <line number="438" hits="0" branch="False" />
+              </lines>
+            </method>
+            <method name="DisplaySeats" signature="(System.Collections.Generic.IEnumerable`1&lt;System.String&gt;)" line-rate="0" branch-rate="0" complexity="4">
+              <lines>
+                <line number="441" hits="0" branch="False" />
+                <line number="442" hits="0" branch="False" />
+                <line number="443" hits="0" branch="False" />
+                <line number="445" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="81" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="446" hits="0" branch="False" />
+                <line number="447" hits="0" branch="False" />
+                <line number="448" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="57" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="449" hits="0" branch="False" />
+                <line number="450" hits="0" branch="False" />
+                <line number="451" hits="0" branch="False" />
+              </lines>
+            </method>
+            <method name="DisplayBookingConfirmation" signature="(CinemaTicketBookingSystem.BookingTransaction)" line-rate="0" branch-rate="1" complexity="1">
+              <lines>
+                <line number="454" hits="0" branch="False" />
+                <line number="455" hits="0" branch="False" />
+                <line number="456" hits="0" branch="False" />
+                <line number="457" hits="0" branch="False" />
+                <line number="458" hits="0" branch="False" />
+                <line number="459" hits="0" branch="False" />
+                <line number="460" hits="0" branch="False" />
+                <line number="461" hits="0" branch="False" />
+              </lines>
+            </method>
+            <method name="DisplayTransactionHistory" signature="(System.Collections.Generic.IEnumerable`1&lt;CinemaTicketBookingSystem.BookingTransaction&gt;)" line-rate="0" branch-rate="0" complexity="2">
+              <lines>
+                <line number="464" hits="0" branch="False" />
+                <line number="465" hits="0" branch="False" />
+                <line number="466" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="303" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="467" hits="0" branch="False" />
+                <line number="468" hits="0" branch="False" />
+                <line number="469" hits="0" branch="False" />
+                <line number="470" hits="0" branch="False" />
+                <line number="471" hits="0" branch="False" />
+                <line number="472" hits="0" branch="False" />
+                <line number="473" hits="0" branch="False" />
+                <line number="474" hits="0" branch="False" />
+                <line number="475" hits="0" branch="False" />
+                <line number="476" hits="0" branch="False" />
+                <line number="477" hits="0" branch="False" />
+              </lines>
+            </method>
+            <method name="GetUserInput" signature="(System.String)" line-rate="0" branch-rate="0" complexity="2">
+              <lines>
+                <line number="480" hits="0" branch="False" />
+                <line number="481" hits="0" branch="False" />
+                <line number="482" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="14" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="483" hits="0" branch="False" />
+              </lines>
+            </method>
+            <method name="GetUserChoice" signature="(System.String,System.Int32,System.Int32)" line-rate="0" branch-rate="0" complexity="6">
+              <lines>
+                <line number="486" hits="0" branch="False" />
+                <line number="487" hits="0" branch="False" />
+                <line number="488" hits="0" branch="False" />
+                <line number="489" hits="0" branch="False" />
+                <line number="490" hits="0" branch="True" condition-coverage="0% (0/6)">
+                  <conditions>
+                    <condition number="23" type="jump" coverage="0%" />
+                    <condition number="27" type="jump" coverage="0%" />
+                    <condition number="41" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="491" hits="0" branch="False" />
+                <line number="492" hits="0" branch="False" />
+                <line number="494" hits="0" branch="False" />
+                <line number="495" hits="0" branch="False" />
+                <line number="496" hits="0" branch="False" />
+              </lines>
+            </method>
+            <method name="ClearScreen" signature="()" line-rate="0" branch-rate="1" complexity="1">
+              <lines>
+                <line number="499" hits="0" branch="False" />
+                <line number="501" hits="0" branch="False" />
+                <line number="502" hits="0" branch="False" />
+                <line number="503" hits="0" branch="False" />
+                <line number="504" hits="0" branch="False" />
+                <line number="505" hits="0" branch="False" />
+              </lines>
+            </method>
+            <method name="WaitForUser" signature="()" line-rate="0" branch-rate="1" complexity="1">
+              <lines>
+                <line number="508" hits="0" branch="False" />
+                <line number="509" hits="0" branch="False" />
+                <line number="510" hits="0" branch="False" />
+                <line number="511" hits="0" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="416" hits="0" branch="False" />
+            <line number="417" hits="0" branch="False" />
+            <line number="418" hits="0" branch="False" />
+            <line number="421" hits="0" branch="False" />
+            <line number="422" hits="0" branch="False" />
+            <line number="423" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="215" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="424" hits="0" branch="False" />
+            <line number="425" hits="0" branch="False" />
+            <line number="426" hits="0" branch="False" />
+            <line number="427" hits="0" branch="False" />
+            <line number="428" hits="0" branch="False" />
+            <line number="431" hits="0" branch="False" />
+            <line number="432" hits="0" branch="False" />
+            <line number="433" hits="0" branch="False" />
+            <line number="434" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="108" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="435" hits="0" branch="False" />
+            <line number="436" hits="0" branch="False" />
+            <line number="437" hits="0" branch="False" />
+            <line number="438" hits="0" branch="False" />
+            <line number="441" hits="0" branch="False" />
+            <line number="442" hits="0" branch="False" />
+            <line number="443" hits="0" branch="False" />
+            <line number="445" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="81" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="446" hits="0" branch="False" />
+            <line number="447" hits="0" branch="False" />
+            <line number="448" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="57" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="449" hits="0" branch="False" />
+            <line number="450" hits="0" branch="False" />
+            <line number="451" hits="0" branch="False" />
+            <line number="454" hits="0" branch="False" />
+            <line number="455" hits="0" branch="False" />
+            <line number="456" hits="0" branch="False" />
+            <line number="457" hits="0" branch="False" />
+            <line number="458" hits="0" branch="False" />
+            <line number="459" hits="0" branch="False" />
+            <line number="460" hits="0" branch="False" />
+            <line number="461" hits="0" branch="False" />
+            <line number="464" hits="0" branch="False" />
+            <line number="465" hits="0" branch="False" />
+            <line number="466" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="303" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="467" hits="0" branch="False" />
+            <line number="468" hits="0" branch="False" />
+            <line number="469" hits="0" branch="False" />
+            <line number="470" hits="0" branch="False" />
+            <line number="471" hits="0" branch="False" />
+            <line number="472" hits="0" branch="False" />
+            <line number="473" hits="0" branch="False" />
+            <line number="474" hits="0" branch="False" />
+            <line number="475" hits="0" branch="False" />
+            <line number="476" hits="0" branch="False" />
+            <line number="477" hits="0" branch="False" />
+            <line number="480" hits="0" branch="False" />
+            <line number="481" hits="0" branch="False" />
+            <line number="482" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="14" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="483" hits="0" branch="False" />
+            <line number="486" hits="0" branch="False" />
+            <line number="487" hits="0" branch="False" />
+            <line number="488" hits="0" branch="False" />
+            <line number="489" hits="0" branch="False" />
+            <line number="490" hits="0" branch="True" condition-coverage="0% (0/6)">
+              <conditions>
+                <condition number="23" type="jump" coverage="0%" />
+                <condition number="27" type="jump" coverage="0%" />
+                <condition number="41" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="491" hits="0" branch="False" />
+            <line number="492" hits="0" branch="False" />
+            <line number="494" hits="0" branch="False" />
+            <line number="495" hits="0" branch="False" />
+            <line number="496" hits="0" branch="False" />
+            <line number="499" hits="0" branch="False" />
+            <line number="501" hits="0" branch="False" />
+            <line number="502" hits="0" branch="False" />
+            <line number="503" hits="0" branch="False" />
+            <line number="504" hits="0" branch="False" />
+            <line number="505" hits="0" branch="False" />
+            <line number="508" hits="0" branch="False" />
+            <line number="509" hits="0" branch="False" />
+            <line number="510" hits="0" branch="False" />
+            <line number="511" hits="0" branch="False" />
+          </lines>
+        </class>
+        <class name="CinemaTicketBookingSystem.BookingController" filename="STUFF\1-KULIAH\0.Semester_6\4. Konstruksi Perangkat Lunak\Praktikum\KPL-S6-Tubes_Kelompok-3\TiketFilm\TiketFilm\Program.cs" line-rate="0" branch-rate="0" complexity="40">
+          <methods>
+            <method name="ProcessTicketOrder" signature="()" line-rate="0" branch-rate="0" complexity="8">
+              <lines>
+                <line number="533" hits="0" branch="False" />
+                <line number="535" hits="0" branch="False" />
+                <line number="536" hits="0" branch="False" />
+                <line number="537" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="17" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="539" hits="0" branch="False" />
+                <line number="540" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="42" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="542" hits="0" branch="False" />
+                <line number="543" hits="0" branch="True" condition-coverage="0% (0/4)">
+                  <conditions>
+                    <condition number="61" type="jump" coverage="0%" />
+                    <condition number="79" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="545" hits="0" branch="False" />
+                <line number="546" hits="0" branch="False" />
+                <line number="548" hits="0" branch="False" />
+                <line number="549" hits="0" branch="False" />
+                <line number="550" hits="0" branch="False" />
+                <line number="551" hits="0" branch="False" />
+                <line number="552" hits="0" branch="False" />
+                <line number="553" hits="0" branch="False" />
+                <line number="554" hits="0" branch="False" />
+              </lines>
+            </method>
+            <method name="SelectMovie" signature="()" line-rate="0" branch-rate="0" complexity="4">
+              <lines>
+                <line number="557" hits="0" branch="False" />
+                <line number="558" hits="0" branch="False" />
+                <line number="559" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="24" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="560" hits="0" branch="False" />
+                <line number="561" hits="0" branch="False" />
+                <line number="562" hits="0" branch="False" />
+                <line number="565" hits="0" branch="False" />
+                <line number="566" hits="0" branch="False" />
+                <line number="568" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="117" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="569" hits="0" branch="False" />
+              </lines>
+            </method>
+            <method name="SelectSchedule" signature="(CinemaTicketBookingSystem.Movie)" line-rate="0" branch-rate="0" complexity="4">
+              <lines>
+                <line number="572" hits="0" branch="False" />
+                <line number="573" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="17" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="574" hits="0" branch="False" />
+                <line number="575" hits="0" branch="False" />
+                <line number="576" hits="0" branch="False" />
+                <line number="579" hits="0" branch="False" />
+                <line number="580" hits="0" branch="False" />
+                <line number="582" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="89" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="583" hits="0" branch="False" />
+              </lines>
+            </method>
+            <method name="SelectSeats" signature="(System.Int32,System.String)" line-rate="0" branch-rate="0" complexity="12">
+              <lines>
+                <line number="586" hits="0" branch="False" />
+                <line number="587" hits="0" branch="False" />
+                <line number="588" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="31" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="589" hits="0" branch="False" />
+                <line number="590" hits="0" branch="False" />
+                <line number="591" hits="0" branch="False" />
+                <line number="594" hits="0" branch="False" />
+                <line number="595" hits="0" branch="False" />
+                <line number="596" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="156" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="598" hits="0" branch="False" />
+                <line number="599" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="372" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="600" hits="0" branch="False" />
+                <line number="603" hits="0" branch="False" />
+                <line number="604" hits="0" branch="False" />
+                <line number="606" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="270" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="607" hits="0" branch="False" />
+                <line number="608" hits="0" branch="False" />
+                <line number="609" hits="0" branch="False" />
+                <line number="610" hits="0" branch="False" />
+                <line number="611" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="308" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="612" hits="0" branch="False" />
+                <line number="613" hits="0" branch="False" />
+                <line number="614" hits="0" branch="False" />
+                <line number="615" hits="0" branch="False" />
+                <line number="616" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="342" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="618" hits="0" branch="False" />
+                <line number="619" hits="0" branch="False" />
+                <line number="621" hits="0" branch="False" />
+                <line number="622" hits="0" branch="False" />
+              </lines>
+            </method>
+            <method name="GetBuyerName" signature="()" line-rate="0" branch-rate="0" complexity="4">
+              <lines>
+                <line number="625" hits="0" branch="False" />
+                <line number="628" hits="0" branch="False" />
+                <line number="629" hits="0" branch="False" />
+                <line number="630" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="27" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="631" hits="0" branch="False" />
+                <line number="632" hits="0" branch="False" />
+                <line number="633" hits="0" branch="False" />
+                <line number="634" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="57" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="636" hits="0" branch="False" />
+                <line number="637" hits="0" branch="False" />
+              </lines>
+            </method>
+            <method name=".ctor" signature="(CinemaTicketBookingSystem.MovieService,CinemaTicketBookingSystem.BookingService,CinemaTicketBookingSystem.SeatService,CinemaTicketBookingSystem.IUserInterface)" line-rate="0" branch-rate="0" complexity="8">
+              <lines>
+                <line number="521" hits="0" branch="False" />
+                <line number="522" hits="0" branch="False" />
+                <line number="523" hits="0" branch="False" />
+                <line number="524" hits="0" branch="False" />
+                <line number="525" hits="0" branch="False" />
+                <line number="526" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="11" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="527" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="33" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="528" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="55" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="529" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="78" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="530" hits="0" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="533" hits="0" branch="False" />
+            <line number="535" hits="0" branch="False" />
+            <line number="536" hits="0" branch="False" />
+            <line number="537" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="17" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="539" hits="0" branch="False" />
+            <line number="540" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="42" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="542" hits="0" branch="False" />
+            <line number="543" hits="0" branch="True" condition-coverage="0% (0/4)">
+              <conditions>
+                <condition number="61" type="jump" coverage="0%" />
+                <condition number="79" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="545" hits="0" branch="False" />
+            <line number="546" hits="0" branch="False" />
+            <line number="548" hits="0" branch="False" />
+            <line number="549" hits="0" branch="False" />
+            <line number="550" hits="0" branch="False" />
+            <line number="551" hits="0" branch="False" />
+            <line number="552" hits="0" branch="False" />
+            <line number="553" hits="0" branch="False" />
+            <line number="554" hits="0" branch="False" />
+            <line number="557" hits="0" branch="False" />
+            <line number="558" hits="0" branch="False" />
+            <line number="559" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="24" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="560" hits="0" branch="False" />
+            <line number="561" hits="0" branch="False" />
+            <line number="562" hits="0" branch="False" />
+            <line number="565" hits="0" branch="False" />
+            <line number="566" hits="0" branch="False" />
+            <line number="568" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="117" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="569" hits="0" branch="False" />
+            <line number="572" hits="0" branch="False" />
+            <line number="573" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="17" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="574" hits="0" branch="False" />
+            <line number="575" hits="0" branch="False" />
+            <line number="576" hits="0" branch="False" />
+            <line number="579" hits="0" branch="False" />
+            <line number="580" hits="0" branch="False" />
+            <line number="582" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="89" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="583" hits="0" branch="False" />
+            <line number="586" hits="0" branch="False" />
+            <line number="587" hits="0" branch="False" />
+            <line number="588" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="31" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="589" hits="0" branch="False" />
+            <line number="590" hits="0" branch="False" />
+            <line number="591" hits="0" branch="False" />
+            <line number="594" hits="0" branch="False" />
+            <line number="595" hits="0" branch="False" />
+            <line number="596" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="156" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="598" hits="0" branch="False" />
+            <line number="599" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="372" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="600" hits="0" branch="False" />
+            <line number="603" hits="0" branch="False" />
+            <line number="604" hits="0" branch="False" />
+            <line number="606" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="270" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="607" hits="0" branch="False" />
+            <line number="608" hits="0" branch="False" />
+            <line number="609" hits="0" branch="False" />
+            <line number="610" hits="0" branch="False" />
+            <line number="611" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="308" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="612" hits="0" branch="False" />
+            <line number="613" hits="0" branch="False" />
+            <line number="614" hits="0" branch="False" />
+            <line number="615" hits="0" branch="False" />
+            <line number="616" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="342" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="618" hits="0" branch="False" />
+            <line number="619" hits="0" branch="False" />
+            <line number="621" hits="0" branch="False" />
+            <line number="622" hits="0" branch="False" />
+            <line number="625" hits="0" branch="False" />
+            <line number="628" hits="0" branch="False" />
+            <line number="629" hits="0" branch="False" />
+            <line number="630" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="27" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="631" hits="0" branch="False" />
+            <line number="632" hits="0" branch="False" />
+            <line number="633" hits="0" branch="False" />
+            <line number="634" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="57" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="636" hits="0" branch="False" />
+            <line number="637" hits="0" branch="False" />
+            <line number="521" hits="0" branch="False" />
+            <line number="522" hits="0" branch="False" />
+            <line number="523" hits="0" branch="False" />
+            <line number="524" hits="0" branch="False" />
+            <line number="525" hits="0" branch="False" />
+            <line number="526" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="11" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="527" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="33" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="528" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="55" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="529" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="78" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="530" hits="0" branch="False" />
+          </lines>
+        </class>
+        <class name="CinemaTicketBookingSystem.CinemaApp" filename="STUFF\1-KULIAH\0.Semester_6\4. Konstruksi Perangkat Lunak\Praktikum\KPL-S6-Tubes_Kelompok-3\TiketFilm\TiketFilm\Program.cs" line-rate="0" branch-rate="0" complexity="29">
+          <methods>
+            <method name="Run" signature="()" line-rate="0" branch-rate="0" complexity="12">
+              <lines>
+                <line number="665" hits="0" branch="False" />
+                <line number="667" hits="0" branch="False" />
+                <line number="669" hits="0" branch="False" />
+                <line number="670" hits="0" branch="False" />
+                <line number="671" hits="0" branch="False" />
+                <line number="672" hits="0" branch="False" />
+                <line number="673" hits="0" branch="False" />
+                <line number="674" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="82" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="675" hits="0" branch="False" />
+                <line number="676" hits="0" branch="False" />
+                <line number="677" hits="0" branch="False" />
+                <line number="678" hits="0" branch="False" />
+                <line number="680" hits="0" branch="False" />
+                <line number="681" hits="0" branch="False" />
+                <line number="682" hits="0" branch="False" />
+                <line number="683" hits="0" branch="False" />
+                <line number="684" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="147" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="686" hits="0" branch="False" />
+                <line number="687" hits="0" branch="False" />
+                <line number="688" hits="0" branch="False" />
+                <line number="689" hits="0" branch="False" />
+                <line number="691" hits="0" branch="False" />
+                <line number="693" hits="0" branch="True" condition-coverage="0% (0/8)">
+                  <conditions>
+                    <condition number="215" type="jump" coverage="0%" />
+                    <condition number="229" type="jump" coverage="0%" />
+                    <condition number="243" type="jump" coverage="0%" />
+                    <condition number="257" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="696" hits="0" branch="False" />
+                <line number="697" hits="0" branch="False" />
+                <line number="698" hits="0" branch="False" />
+                <line number="700" hits="0" branch="False" />
+                <line number="701" hits="0" branch="False" />
+                <line number="703" hits="0" branch="False" />
+                <line number="704" hits="0" branch="False" />
+                <line number="705" hits="0" branch="False" />
+                <line number="707" hits="0" branch="False" />
+                <line number="709" hits="0" branch="False" />
+                <line number="710" hits="0" branch="False" />
+                <line number="711" hits="0" branch="False" />
+                <line number="713" hits="0" branch="False" />
+                <line number="714" hits="0" branch="False" />
+              </lines>
+            </method>
+            <method name="DisplayMainMenu" signature="()" line-rate="0" branch-rate="1" complexity="1">
+              <lines>
+                <line number="717" hits="0" branch="False" />
+                <line number="718" hits="0" branch="False" />
+                <line number="719" hits="0" branch="False" />
+                <line number="720" hits="0" branch="False" />
+                <line number="721" hits="0" branch="False" />
+                <line number="722" hits="0" branch="False" />
+                <line number="723" hits="0" branch="False" />
+              </lines>
+            </method>
+            <method name="ShowMovies" signature="()" line-rate="0" branch-rate="0" complexity="2">
+              <lines>
+                <line number="726" hits="0" branch="False" />
+                <line number="727" hits="0" branch="False" />
+                <line number="728" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="24" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="729" hits="0" branch="False" />
+                <line number="730" hits="0" branch="False" />
+                <line number="731" hits="0" branch="False" />
+                <line number="734" hits="0" branch="False" />
+                <line number="735" hits="0" branch="False" />
+              </lines>
+            </method>
+            <method name="BookTickets" signature="()" line-rate="0" branch-rate="0" complexity="2">
+              <lines>
+                <line number="738" hits="0" branch="False" />
+                <line number="741" hits="0" branch="False" />
+                <line number="742" hits="0" branch="False" />
+                <line number="743" hits="0" branch="False" />
+                <line number="744" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="50" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="745" hits="0" branch="False" />
+              </lines>
+            </method>
+            <method name="ShowTransactionHistory" signature="()" line-rate="0" branch-rate="0" complexity="2">
+              <lines>
+                <line number="748" hits="0" branch="False" />
+                <line number="749" hits="0" branch="False" />
+                <line number="750" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="24" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="751" hits="0" branch="False" />
+                <line number="752" hits="0" branch="False" />
+                <line number="753" hits="0" branch="False" />
+                <line number="756" hits="0" branch="False" />
+                <line number="757" hits="0" branch="False" />
+              </lines>
+            </method>
+            <method name=".ctor" signature="(CinemaTicketBookingSystem.MovieService,CinemaTicketBookingSystem.BookingService,CinemaTicketBookingSystem.SeatService,CinemaTicketBookingSystem.IUserInterface,CinemaTicketBookingSystem.AuthService)" line-rate="0" branch-rate="0" complexity="10">
+              <lines>
+                <line number="650" hits="0" branch="False" />
+                <line number="651" hits="0" branch="False" />
+                <line number="652" hits="0" branch="False" />
+                <line number="653" hits="0" branch="False" />
+                <line number="654" hits="0" branch="False" />
+                <line number="655" hits="0" branch="False" />
+                <line number="656" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="11" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="657" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="33" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="658" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="55" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="659" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="78" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="660" hits="0" branch="False" />
+                <line number="661" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="117" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="662" hits="0" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="665" hits="0" branch="False" />
+            <line number="667" hits="0" branch="False" />
+            <line number="669" hits="0" branch="False" />
+            <line number="670" hits="0" branch="False" />
+            <line number="671" hits="0" branch="False" />
+            <line number="672" hits="0" branch="False" />
+            <line number="673" hits="0" branch="False" />
+            <line number="674" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="82" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="675" hits="0" branch="False" />
+            <line number="676" hits="0" branch="False" />
+            <line number="677" hits="0" branch="False" />
+            <line number="678" hits="0" branch="False" />
+            <line number="680" hits="0" branch="False" />
+            <line number="681" hits="0" branch="False" />
+            <line number="682" hits="0" branch="False" />
+            <line number="683" hits="0" branch="False" />
+            <line number="684" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="147" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="686" hits="0" branch="False" />
+            <line number="687" hits="0" branch="False" />
+            <line number="688" hits="0" branch="False" />
+            <line number="689" hits="0" branch="False" />
+            <line number="691" hits="0" branch="False" />
+            <line number="693" hits="0" branch="True" condition-coverage="0% (0/8)">
+              <conditions>
+                <condition number="215" type="jump" coverage="0%" />
+                <condition number="229" type="jump" coverage="0%" />
+                <condition number="243" type="jump" coverage="0%" />
+                <condition number="257" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="696" hits="0" branch="False" />
+            <line number="697" hits="0" branch="False" />
+            <line number="698" hits="0" branch="False" />
+            <line number="700" hits="0" branch="False" />
+            <line number="701" hits="0" branch="False" />
+            <line number="703" hits="0" branch="False" />
+            <line number="704" hits="0" branch="False" />
+            <line number="705" hits="0" branch="False" />
+            <line number="707" hits="0" branch="False" />
+            <line number="709" hits="0" branch="False" />
+            <line number="710" hits="0" branch="False" />
+            <line number="711" hits="0" branch="False" />
+            <line number="713" hits="0" branch="False" />
+            <line number="714" hits="0" branch="False" />
+            <line number="717" hits="0" branch="False" />
+            <line number="718" hits="0" branch="False" />
+            <line number="719" hits="0" branch="False" />
+            <line number="720" hits="0" branch="False" />
+            <line number="721" hits="0" branch="False" />
+            <line number="722" hits="0" branch="False" />
+            <line number="723" hits="0" branch="False" />
+            <line number="726" hits="0" branch="False" />
+            <line number="727" hits="0" branch="False" />
+            <line number="728" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="24" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="729" hits="0" branch="False" />
+            <line number="730" hits="0" branch="False" />
+            <line number="731" hits="0" branch="False" />
+            <line number="734" hits="0" branch="False" />
+            <line number="735" hits="0" branch="False" />
+            <line number="738" hits="0" branch="False" />
+            <line number="741" hits="0" branch="False" />
+            <line number="742" hits="0" branch="False" />
+            <line number="743" hits="0" branch="False" />
+            <line number="744" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="50" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="745" hits="0" branch="False" />
+            <line number="748" hits="0" branch="False" />
+            <line number="749" hits="0" branch="False" />
+            <line number="750" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="24" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="751" hits="0" branch="False" />
+            <line number="752" hits="0" branch="False" />
+            <line number="753" hits="0" branch="False" />
+            <line number="756" hits="0" branch="False" />
+            <line number="757" hits="0" branch="False" />
+            <line number="650" hits="0" branch="False" />
+            <line number="651" hits="0" branch="False" />
+            <line number="652" hits="0" branch="False" />
+            <line number="653" hits="0" branch="False" />
+            <line number="654" hits="0" branch="False" />
+            <line number="655" hits="0" branch="False" />
+            <line number="656" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="11" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="657" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="33" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="658" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="55" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="659" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="78" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="660" hits="0" branch="False" />
+            <line number="661" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="117" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="662" hits="0" branch="False" />
+          </lines>
+        </class>
+        <class name="CinemaTicketBookingSystem.Program" filename="STUFF\1-KULIAH\0.Semester_6\4. Konstruksi Perangkat Lunak\Praktikum\KPL-S6-Tubes_Kelompok-3\TiketFilm\TiketFilm\Program.cs" line-rate="0" branch-rate="1" complexity="2">
+          <methods>
+            <method name="get_IsTesting" signature="()" line-rate="0" branch-rate="1" complexity="1">
+              <lines>
+                <line number="762" hits="0" branch="False" />
+              </lines>
+            </method>
+            <method name="Main" signature="()" line-rate="0" branch-rate="1" complexity="1">
+              <lines>
+                <line number="765" hits="0" branch="False" />
+                <line number="767" hits="0" branch="False" />
+                <line number="768" hits="0" branch="False" />
+                <line number="769" hits="0" branch="False" />
+                <line number="770" hits="0" branch="False" />
+                <line number="771" hits="0" branch="False" />
+                <line number="773" hits="0" branch="False" />
+                <line number="774" hits="0" branch="False" />
+                <line number="775" hits="0" branch="False" />
+                <line number="777" hits="0" branch="False" />
+                <line number="778" hits="0" branch="False" />
+                <line number="781" hits="0" branch="False" />
+                <line number="782" hits="0" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="762" hits="0" branch="False" />
+            <line number="765" hits="0" branch="False" />
+            <line number="767" hits="0" branch="False" />
+            <line number="768" hits="0" branch="False" />
+            <line number="769" hits="0" branch="False" />
+            <line number="770" hits="0" branch="False" />
+            <line number="771" hits="0" branch="False" />
+            <line number="773" hits="0" branch="False" />
+            <line number="774" hits="0" branch="False" />
+            <line number="775" hits="0" branch="False" />
+            <line number="777" hits="0" branch="False" />
+            <line number="778" hits="0" branch="False" />
+            <line number="781" hits="0" branch="False" />
+            <line number="782" hits="0" branch="False" />
+          </lines>
+        </class>
+      </classes>
+    </package>
+  </packages>
+</coverage>

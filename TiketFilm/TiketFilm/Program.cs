@@ -759,6 +759,8 @@ namespace CinemaTicketBookingSystem
 
     public class Program
     {
+        public static bool IsTesting { get; set; }
+
         public static void Main()
         {
             // Initialize dependencies
